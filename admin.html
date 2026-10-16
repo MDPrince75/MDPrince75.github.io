@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD. PRINCE - Admin</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .box {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin: 8px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #111827;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .logout {
+      background: #dc2626;
+    }
+
+    #editor {
+      display: none;
+    }
+
+    #message {
+      text-align: center;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h1>MD. PRINCE</h1>
+  <p style="text-align:center;">Admin / Edit Panel</p>
+
+  <div id="login">
+    <h2>Admin Login</h2>
+
+    <input type="email" id="email" placeholder="Admin Email">
+
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="editor">
+
+    <h2>Edit Profile</h2>
+
+    <input id="full_name" placeholder="Full Name">
+
+    <input id="job_title" placeholder="Job Title">
+
+    <textarea id="about_me" placeholder="About Me"></textarea>
+
+    <textarea id="career" placeholder="Career"></textarea>
+
+    <textarea id="education" placeholder="Education"></textarea>
+
+    <textarea id="family" placeholder="Family"></textarea>
+
+    <textarea id="interests" placeholder="Interests"></textarea>
+
+    <input id="facebook_url" placeholder="Facebook URL">
+
+    <input id="Instagram_url" placeholder="Instagram URL">
+
+    <input id="whatsapp_url" placeholder="WhatsApp URL">
+
+    <input id="email_profile" placeholder="Email">
+
+    <input id="phone" placeholder="Phone">
+
+    <input id="profile_image" placeholder="Profile Image URL">
+
+    <button onclick="saveProfile()">Save Changes</button>
+
+    <button class="logout" onclick="logout()">Logout</button>
+
+  </div>
+
+  <div id="message"></div>
+
+</div>
+
+<script>
+
+const SUPABASE_URL = "https://mwmgwkufuukvuqpadkck.supabase.co";
+
+/*
+  এখানে তোমার Supabase Publishable Key বসাতে হবে।
+  আমি ইচ্ছা করে তোমার key এখানে লিখছি না।
+*/
+const SUPABASE_KEY = "sb_publishable_dfYTZhLE8QzXuGN9X4MSVg_uaj4agD0";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+async function login() {
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+  if (error) {
+    document.getElementById("message").innerText =
+      "Login failed: " + error.message;
+    return;
+  }
+
+  document.getElementById("message").innerText =
+    "Login successful.";
+
+  document.getElementById("login").style.display = "none";
+  document.getElementById("editor").style.display = "block";
+
+  loadProfile();
+}
+
+
+async function loadProfile() {
+
+  const { data, error } =
+    await supabaseClient
+      .from("profile")
+      .select("*")
+      .eq("id", 1)
+      .single();
+
+  if (error) {
+    document.getElementById("message").innerText =
+      "Could not load profile: " + error.message;
+    return;
+  }
+
+  document.getElementById("full_name").value = data.full_name || "";
+  document.getElementById("job_title").value = data.job_title || "";
+  document.getElementById("about_me").value = data.about_me || "";
+  document.getElementById("career").value = data.career || "";
+  document.getElementById("education").value = data.education || "";
+  document.getElementById("family").value = data.family || "";
+  document.getElementById("interests").value = data.interests || "";
+  document.getElementById("facebook_url").value = data.facebook_url || "";
+  document.getElementById("Instagram_url").value = data.Instagram_url || "";
+  document.getElementById("whatsapp_url").value = data.whatsapp_url || "";
+  document.getElementById("email_profile").value = data.email || "";
+  document.getElementById("phone").value = data.phone || "";
+  document.getElementById("profile_image").value = data.profile_image || "";
+}
+
+
+async function saveProfile() {
+
+  const updates = {
+
+    full_name: document.getElementById("full_name").value,
+
+    job_title: document.getElementById("job_title").value,
+
+    about_me: document.getElementById("about_me").value,
+
+    career: document.getElementById("career").value,
+
+    education: document.getElementById("education").value,
+
+    family: document.getElementById("family").value,
+
+    interests: document.getElementById("interests").value,
+
+    facebook_url: document.getElementById("facebook_url").value,
+
+    Instagram_url: document.getElementById("Instagram_url").value,
+
+    whatsapp_url: document.getElementById("whatsapp_url").value,
+
+    email: document.getElementById("email_profile").value,
+
+    phone: document.getElementById("phone").value,
+
+    profile_image: document.getElementById("profile_image").value
+  };
+
+
+  const { error } =
+    await supabaseClient
+      .from("profile")
+      .update(updates)
+      .eq("id", 1);
+
+
+  if (error) {
+
+    document.getElementById("message").innerText =
+      "Save failed: " + error.message;
+
+  } else {
+
+    document.getElementById("message").innerText =
+      "Profile updated successfully!";
+
+  }
+
+}
+
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("editor").style.display = "none";
+  document.getElementById("login").style.display = "block";
+
+  document.getElementById("message").innerText =
+    "Logged out.";
+
+}
+
+</script>
+
+</body>
+</html>
