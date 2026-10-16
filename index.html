@@ -9,189 +9,202 @@
 
 <title>MD. PRINCE — Personal Profile</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
+
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:Arial,"Noto Sans Bengali",sans-serif;
-background:linear-gradient(180deg,#07111f,#0a1627,#07111f);
-color:#f4f7fb;
-line-height:1.7;
+  margin:0;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  background:linear-gradient(180deg,#07111f,#0a1627,#07111f);
+  color:#f4f7fb;
+  line-height:1.7;
 }
 
 a{
-color:inherit;
-text-decoration:none;
+  color:inherit;
+  text-decoration:none;
 }
 
 .wrap{
-max-width:1050px;
-margin:auto;
-padding:0 22px;
+  max-width:1050px;
+  margin:auto;
+  padding:0 22px;
 }
 
 nav{
-position:sticky;
-top:0;
-z-index:10;
-background:rgba(7,17,31,.95);
-border-bottom:1px solid #1e3350;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(7,17,31,.95);
+  border-bottom:1px solid #1e3350;
 }
 
 .nav{
-display:flex;
-align-items:center;
-justify-content:space-between;
-min-height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:66px;
 }
 
 .brand{
-font-weight:800;
-letter-spacing:1px;
+  font-weight:800;
+  letter-spacing:1px;
 }
 
 .links{
-display:flex;
-gap:18px;
-flex-wrap:wrap;
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
 }
 
 .links a{
-color:#aebbd0;
-font-size:14px;
+  color:#aebbd0;
+  font-size:14px;
 }
 
 .hero{
-padding:80px 0 60px;
-text-align:center;
+  padding:80px 0 60px;
+  text-align:center;
 }
 
 .photo{
-width:155px;
-height:155px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid white;
-box-shadow:0 18px 50px rgba(0,0,0,.35);
-background:#15263c;
+  width:155px;
+  height:155px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid white;
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+  background:#15263c;
 }
 
 h1{
-font-size:clamp(38px,7vw,68px);
-margin:18px 0 8px;
-letter-spacing:2px;
+  font-size:clamp(38px,7vw,68px);
+  margin:18px 0 8px;
+  letter-spacing:2px;
 }
 
 .tag{
-color:#4da3ff;
-font-weight:700;
-font-size:18px;
+  color:#4da3ff;
+  font-weight:700;
+  font-size:18px;
 }
 
 .intro{
-max-width:720px;
-margin:15px auto;
-color:#aebbd0;
+  max-width:720px;
+  margin:15px auto;
+  color:#aebbd0;
 }
 
 section{
-padding:55px 0;
+  padding:55px 0;
 }
 
 .section-title{
-font-size:30px;
-margin:0 0 22px;
+  font-size:30px;
+  margin:0 0 22px;
 }
 
 .card{
-background:rgba(13,27,46,.85);
-border:1px solid #1e3350;
-border-radius:20px;
-padding:28px;
-box-shadow:0 16px 40px rgba(0,0,0,.18);
+  background:rgba(13,27,46,.85);
+  border:1px solid #1e3350;
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+  white-space:pre-line;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
 }
 
 .item{
-padding:18px;
-border:1px solid #1e3350;
-border-radius:15px;
-background:#0a1728;
+  padding:18px;
+  border:1px solid #1e3350;
+  border-radius:15px;
+  background:#0a1728;
 }
 
 .item strong{
-display:block;
-color:#4da3ff;
-margin-bottom:5px;
+  display:block;
+  color:#4da3ff;
+  margin-bottom:5px;
 }
 
 .muted{
-color:#aebbd0;
+  color:#aebbd0;
 }
 
 ul{
-padding-left:22px;
+  padding-left:22px;
 }
 
 .contact{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 .btn{
-display:inline-block;
-padding:11px 17px;
-border:1px solid #1e3350;
-border-radius:12px;
-background:#10243c;
+  display:inline-block;
+  padding:11px 17px;
+  border:1px solid #1e3350;
+  border-radius:12px;
+  background:#10243c;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:#183654;
 }
 
 footer{
-border-top:1px solid #1e3350;
-padding:28px 0;
-text-align:center;
-color:#aebbd0;
-font-size:14px;
+  border-top:1px solid #1e3350;
+  padding:28px 0;
+  text-align:center;
+  color:#aebbd0;
+  font-size:14px;
 }
 
 @media(max-width:700px){
 
-.links{
-display:none;
+  .links{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:55px;
+  }
+
+  .card{
+    padding:21px;
+  }
+
 }
 
-.grid{
-grid-template-columns:1fr;
-}
-
-.hero{
-padding-top:55px;
-}
-
-.card{
-padding:21px;
-}
-
-}
 </style>
+
 </head>
 
 <body>
 
+
 <nav>
+
 <div class="wrap nav">
 
 <div class="brand">
@@ -210,6 +223,7 @@ MD. PRINCE
 </div>
 
 </div>
+
 </nav>
 
 
@@ -218,17 +232,18 @@ MD. PRINCE
 <div class="wrap">
 
 <img
-class="photo"
-src="profile.jpg"
-alt="MD. Prince"
+  class="photo"
+  id="profilePhoto"
+  src="profile.png"
+  alt="MD. Prince"
 >
 
-<h1>
+<h1 id="profileName">
 MD. PRINCE
 </h1>
 
-<div class="tag">
-Customer Support &amp; Operations Executive
+<div class="tag" id="jobTitle">
+Customer Support & Operations Executive
 </div>
 
 <p class="intro">
@@ -250,15 +265,11 @@ operations, professional growth and building my own future.
 About Me
 </h2>
 
-<div class="card">
+<div class="card" id="aboutContent">
 
-<p>
 আমি বর্তমানে Box2Go International Courier-এ Customer Support ও Operations Executive হিসেবে কাজ করি। মানুষের সাথে যোগাযোগ, কাস্টমার সাপোর্ট ও অপারেশনাল কাজের মাধ্যমে প্রতিনিয়ত নতুন কিছু শিখতে চেষ্টা করি।
-</p>
 
-<p>
 আমার ভবিষ্যতের লক্ষ্য হলো নিজের একটি কুরিয়ার সার্ভিস প্রতিষ্ঠা করা এবং নিজের পরিচয়ে একটি সফল ব্যবসা গড়ে তোলা। জীবনে আমার পরিবারের সুখ ও ভবিষ্যৎকে অনেক গুরুত্ব দিই। বাবা-মাকে নিয়ে একটি সুন্দর ও স্বচ্ছন্দ জীবন গড়ে তুলতে চাই। পাশাপাশি আমার প্রিয় মানুষকে সঙ্গে নিয়ে ভালোবাসা, বিশ্বাস ও সম্মানের ভিত্তিতে একটি সুন্দর পরিবার ও সংসার গড়ে তোলাই আমার অন্যতম স্বপ্ন।
-</p>
 
 </div>
 
@@ -275,9 +286,7 @@ Career
 
 <div class="item">
 
-<strong>
-Company
-</strong>
+<strong>Company</strong>
 
 <span>
 Box2Go International Courier
@@ -288,12 +297,10 @@ Box2Go International Courier
 
 <div class="item">
 
-<strong>
-Position
-</strong>
+<strong>Position</strong>
 
-<span>
-Customer Support &amp; Operations Executive
+<span id="careerPosition">
+Customer Support & Operations Executive
 </span>
 
 </div>
@@ -301,9 +308,7 @@ Customer Support &amp; Operations Executive
 
 <div class="item">
 
-<strong>
-Current Role
-</strong>
+<strong>Current Role</strong>
 
 <span>
 Currently employed
@@ -314,9 +319,7 @@ Currently employed
 
 <div class="item">
 
-<strong>
-Future Goal
-</strong>
+<strong>Future Goal</strong>
 
 <span>
 নিজের একটি Courier Service প্রতিষ্ঠা করে সফলভাবে পরিচালনা করা।
@@ -329,39 +332,32 @@ Future Goal
 
 <div class="card" style="margin-top:20px">
 
-<strong>
-Key Responsibilities
-</strong>
+<strong>Key Responsibilities</strong>
 
 <ul>
 
-<li>
-Customer support and customer communication
-</li>
+<li>Customer support and customer communication</li>
 
-<li>
-Parcel booking and shipment coordination
-</li>
+<li>Parcel booking and shipment coordination</li>
 
-<li>
-Pickup and delivery coordination
-</li>
+<li>Pickup and delivery coordination</li>
 
-<li>
-Shipping information and quotation support
-</li>
+<li>Shipping information and quotation support</li>
 
-<li>
-Parcel updates
-</li>
+<li>Parcel updates</li>
 
-<li>
-Daily operational coordination
-</li>
+<li>Daily operational coordination</li>
 
 </ul>
 
 </div>
+
+
+<div
+  class="card"
+  id="careerContent"
+  style="margin-top:20px; display:none;"
+></div>
 
 </section>
 
@@ -372,22 +368,16 @@ Daily operational coordination
 Education
 </h2>
 
-<div class="card">
+<div class="card" id="educationContent">
 
-<p>
 <strong>School:</strong>
 Ilshabari High School, Naogaon
-</p>
 
-<p>
 <strong>Board:</strong>
 Rajshahi Education Board
-</p>
 
-<p>
 <strong>SSC:</strong>
 Registered candidate — 2026
-</p>
 
 </div>
 
@@ -400,23 +390,20 @@ Registered candidate — 2026
 Family
 </h2>
 
-<div class="grid">
+
+<div class="grid" id="defaultFamily">
 
 
 <div class="item">
 
-<strong>
-Father
-</strong>
+<strong>Father</strong>
 
 <span>
 Md. Mahmud Alo
 </span>
 
 <div class="muted">
-
 JCB Operator — NOVOAIR, Hazrat Shahjalal International Airport, Dhaka
-
 </div>
 
 </div>
@@ -424,9 +411,7 @@ JCB Operator — NOVOAIR, Hazrat Shahjalal International Airport, Dhaka
 
 <div class="item">
 
-<strong>
-Mother
-</strong>
+<strong>Mother</strong>
 
 <span>
 MST. Shamli Begum
@@ -437,24 +422,27 @@ MST. Shamli Begum
 
 <div class="item">
 
-<strong>
-Brother
-</strong>
+<strong>Brother</strong>
 
 <span>
 Md. Diyasan Pranto
 </span>
 
 <div class="muted">
-
 Accounts, ASM International Courier Service
-
 </div>
 
 </div>
 
 
 </div>
+
+
+<div
+  class="card"
+  id="familyContent"
+  style="display:none;"
+></div>
 
 </section>
 
@@ -465,31 +453,17 @@ Accounts, ASM International Courier Service
 Interests
 </h2>
 
-<div class="card">
+<div class="card" id="interestsContent">
 
-<ul>
+• Courier business and entrepreneurship
 
-<li>
-Courier business and entrepreneurship
-</li>
+• Customer service and communication
 
-<li>
-Customer service and communication
-</li>
+• Business growth
 
-<li>
-Business growth
-</li>
+• Personal development
 
-<li>
-Personal development
-</li>
-
-<li>
-Family and a comfortable future
-</li>
-
-</ul>
+• Family and a comfortable future
 
 </div>
 
@@ -504,21 +478,37 @@ Contact
 
 <div class="card">
 
-<p class="muted">
-Social links will be added later.
-</p>
+<div id="contactDetails"></div>
 
 <div class="contact">
 
-<a class="btn" href="#">
+<a
+  class="btn"
+  id="facebookLink"
+  href="#"
+  target="_blank"
+  rel="noopener noreferrer"
+>
 Facebook
 </a>
 
-<a class="btn" href="#">
+<a
+  class="btn"
+  id="instagramLink"
+  href="#"
+  target="_blank"
+  rel="noopener noreferrer"
+>
 Instagram
 </a>
 
-<a class="btn" href="#">
+<a
+  class="btn"
+  id="whatsappLink"
+  href="#"
+  target="_blank"
+  rel="noopener noreferrer"
+>
 WhatsApp
 </a>
 
@@ -537,6 +527,248 @@ WhatsApp
 © 2026 MD. PRINCE — Personal Profile
 
 </footer>
+
+
+<script>
+
+/* ==============================
+   SUPABASE CONNECTION
+================================ */
+
+const SUPABASE_URL =
+"https://mwmgwkufuukvuqpadkck.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_dfYTZhLE8QzXuGN9X4MSVg_uaj4agD0";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* ==============================
+   LOAD PROFILE
+================================ */
+
+async function loadProfile(){
+
+  const { data, error } =
+  await supabaseClient
+    .from("profile")
+    .select("*")
+    .eq("id",1)
+    .single();
+
+
+  if(error){
+
+    console.error(
+      "Profile load failed:",
+      error
+    );
+
+    return;
+  }
+
+
+  /* NAME */
+
+  if(data.full_name){
+
+    document.getElementById(
+      "profileName"
+    ).textContent =
+      data.full_name;
+
+  }
+
+
+  /* JOB TITLE */
+
+  if(data.job_title){
+
+    document.getElementById(
+      "jobTitle"
+    ).textContent =
+      data.job_title;
+
+    document.getElementById(
+      "careerPosition"
+    ).textContent =
+      data.job_title;
+
+  }
+
+
+  /* PROFILE PHOTO */
+
+  if(data.profile_image){
+
+    document.getElementById(
+      "profilePhoto"
+    ).src =
+      data.profile_image;
+
+  }
+
+
+  /* ABOUT */
+
+  if(data.about_me){
+
+    document.getElementById(
+      "aboutContent"
+    ).textContent =
+      data.about_me;
+
+  }
+
+
+  /* CAREER */
+
+  if(data.career){
+
+    const career =
+      document.getElementById(
+        "careerContent"
+      );
+
+    career.textContent =
+      data.career;
+
+    career.style.display =
+      "block";
+
+  }
+
+
+  /* EDUCATION */
+
+  if(data.education){
+
+    document.getElementById(
+      "educationContent"
+    ).textContent =
+      data.education;
+
+  }
+
+
+  /* FAMILY */
+
+  if(data.family){
+
+    document.getElementById(
+      "defaultFamily"
+    ).style.display =
+      "none";
+
+    const family =
+      document.getElementById(
+        "familyContent"
+      );
+
+    family.textContent =
+      data.family;
+
+    family.style.display =
+      "block";
+
+  }
+
+
+  /* INTERESTS */
+
+  if(data.interests){
+
+    document.getElementById(
+      "interestsContent"
+    ).textContent =
+      data.interests;
+
+  }
+
+
+  /* FACEBOOK */
+
+  if(data.facebook_url){
+
+    document.getElementById(
+      "facebookLink"
+    ).href =
+      data.facebook_url;
+
+  }
+
+
+  /* INSTAGRAM */
+
+  if(data.Instagram_url){
+
+    document.getElementById(
+      "instagramLink"
+    ).href =
+      data.Instagram_url;
+
+  }
+
+
+  /* WHATSAPP */
+
+  if(data.whatsapp_url){
+
+    document.getElementById(
+      "whatsappLink"
+    ).href =
+      data.whatsapp_url;
+
+  }
+
+
+  /* CONTACT DETAILS */
+
+  const contactDetails =
+    document.getElementById(
+      "contactDetails"
+    );
+
+
+  let contactHTML = "";
+
+
+  if(data.email){
+
+    contactHTML +=
+      "<p><strong>Email:</strong> " +
+      data.email +
+      "</p>";
+
+  }
+
+
+  if(data.phone){
+
+    contactHTML +=
+      "<p><strong>Phone:</strong> " +
+      data.phone +
+      "</p>";
+
+  }
+
+
+  contactDetails.innerHTML =
+    contactHTML;
+
+}
+
+
+/* START */
+
+loadProfile();
+
+</script>
 
 
 </body>
