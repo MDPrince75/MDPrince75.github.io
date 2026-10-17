@@ -9,22 +9,18 @@
   <meta name="description"
         content="Personal profile website of MD. PRINCE — Customer Support & Operations Executive.">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    /* =========================
-       RESET
-    ========================== */
+
     *{
       margin:0;
       padding:0;
@@ -88,9 +84,8 @@
       border-radius:20px;
     }
 
-    /* =========================
-       NAVBAR
-    ========================== */
+    /* NAVBAR */
+
     header{
       position:fixed;
       top:0;
@@ -183,9 +178,8 @@
       color:#fff;
     }
 
-    /* =========================
-       HERO
-    ========================== */
+    /* HERO */
+
     .hero{
       min-height:100vh;
       display:flex;
@@ -292,7 +286,6 @@
 
     .btn-primary:hover{
       transform:translateY(-3px);
-      box-shadow:0 17px 38px rgba(45,212,191,.23);
     }
 
     .btn-outline{
@@ -307,9 +300,8 @@
       transform:translateY(-3px);
     }
 
-    /* =========================
-       PROFILE PHOTO
-    ========================== */
+    /* PROFILE PHOTO */
+
     .hero-image-wrap{
       display:flex;
       justify-content:center;
@@ -346,9 +338,8 @@
       border:7px solid #081120;
     }
 
-    /* =========================
-       SECTION TITLES
-    ========================== */
+    /* SECTION */
+
     .section-head{
       margin-bottom:40px;
     }
@@ -387,9 +378,8 @@
       max-width:680px;
     }
 
-    /* =========================
-       GLASS CARD
-    ========================== */
+    /* CARDS */
+
     .glass-card{
       background:linear-gradient(
         145deg,
@@ -408,12 +398,10 @@
     .glass-card:hover{
       transform:translateY(-5px);
       border-color:rgba(45,212,191,.25);
-      box-shadow:0 23px 60px rgba(0,0,0,.25);
     }
 
-    /* =========================
-       ABOUT
-    ========================== */
+    /* ABOUT */
+
     .about-grid{
       display:grid;
       grid-template-columns:.7fr 1.3fr;
@@ -459,9 +447,8 @@
       white-space:pre-line;
     }
 
-    /* =========================
-       INFORMATION CARDS
-    ========================== */
+    /* INFORMATION */
+
     .cards-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -512,9 +499,8 @@
       white-space:pre-line;
     }
 
-    /* =========================
-       CONTACT
-    ========================== */
+    /* CONTACT */
+
     .contact-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -553,9 +539,8 @@
       word-break:break-word;
     }
 
-    /* =========================
-       SOCIAL
-    ========================== */
+    /* SOCIAL */
+
     .social-wrap{
       display:flex;
       justify-content:center;
@@ -585,9 +570,8 @@
       transform:translateY(-4px);
     }
 
-    /* =========================
-       FOOTER
-    ========================== */
+    /* FOOTER */
+
     footer{
       border-top:1px solid rgba(255,255,255,.07);
       background:rgba(3,7,18,.65);
@@ -602,9 +586,8 @@
       font-weight:700;
     }
 
-    /* =========================
-       LOADING
-    ========================== */
+    /* LOADING */
+
     #loading{
       position:fixed;
       inset:0;
@@ -638,9 +621,8 @@
       }
     }
 
-    /* =========================
-       ANIMATION
-    ========================== */
+    /* ANIMATION */
+
     .reveal{
       opacity:0;
       transform:translateY(25px);
@@ -652,9 +634,8 @@
       transform:translateY(0);
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================== */
+    /* MOBILE */
+
     @media(max-width:900px){
 
       section{
@@ -774,25 +755,32 @@
         width:100%;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Loading -->
+  <!-- LOADING -->
+
   <div id="loading">
     <div class="loader"></div>
     <p>Loading profile...</p>
   </div>
 
-  <!-- Navbar -->
+
+  <!-- NAVBAR -->
+
   <header>
+
     <nav>
+
       <a href="#home" class="logo">
         MD. <span>PRINCE</span>
       </a>
 
       <ul class="nav-links" id="navLinks">
+
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#career">Career</a></li>
@@ -807,17 +795,22 @@
             Admin
           </a>
         </li>
+
       </ul>
 
       <div class="menu-btn" id="menuBtn">
         <i class="fa-solid fa-bars"></i>
       </div>
+
     </nav>
+
   </header>
 
 
   <!-- HERO -->
+
   <section class="hero" id="home">
+
     <div class="container hero-grid">
 
       <div class="hero-content reveal">
@@ -852,38 +845,54 @@
           </a>
 
         </div>
+
       </div>
 
+
+      <!-- PROFILE IMAGE -->
 
       <div class="hero-image-wrap reveal">
 
         <div class="profile-ring">
+
           <img
             id="profileImage"
             class="profile-image"
+            src="profile.png"
             alt="MD. PRINCE"
-            src="https://ui-avatars.com/api/?name=MD+PRINCE&size=500&background=111827&color=2dd4bf&bold=true"
           >
+
         </div>
 
       </div>
 
     </div>
+
   </section>
 
 
   <!-- ABOUT -->
+
   <section id="about">
 
     <div class="container">
 
       <div class="section-head reveal">
-        <div class="section-label">Introduction</div>
-        <h2 class="section-title">About Me</h2>
+
+        <div class="section-label">
+          Introduction
+        </div>
+
+        <h2 class="section-title">
+          About Me
+        </h2>
+
         <p class="section-subtitle">
           A little information about who I am and what I do.
         </p>
+
       </div>
+
 
       <div class="about-grid">
 
@@ -893,7 +902,9 @@
             <i class="fa-solid fa-user-tie"></i>
           </div>
 
-          <h3>Personal Profile</h3>
+          <h3>
+            Personal Profile
+          </h3>
 
           <p>
             Customer Support<br>
@@ -913,19 +924,30 @@
         </div>
 
       </div>
+
     </div>
+
   </section>
 
 
   <!-- CAREER -->
+
   <section id="career">
 
     <div class="container">
 
       <div class="section-head reveal">
-        <div class="section-label">Professional Journey</div>
-        <h2 class="section-title">Career & Experience</h2>
+
+        <div class="section-label">
+          Professional Journey
+        </div>
+
+        <h2 class="section-title">
+          Career & Experience
+        </h2>
+
       </div>
+
 
       <div class="glass-card info-card reveal">
 
@@ -933,7 +955,9 @@
           <i class="fa-solid fa-briefcase"></i>
         </div>
 
-        <h3>My Career</h3>
+        <h3>
+          My Career
+        </h3>
 
         <p id="careerText">
           I am currently working in the international courier industry, gaining practical experience in customer support, parcel booking, international shipping information and day-to-day courier operations.
@@ -942,18 +966,28 @@
       </div>
 
     </div>
+
   </section>
 
 
   <!-- EDUCATION -->
+
   <section id="education">
 
     <div class="container">
 
       <div class="section-head reveal">
-        <div class="section-label">Academic Background</div>
-        <h2 class="section-title">Education</h2>
+
+        <div class="section-label">
+          Academic Background
+        </div>
+
+        <h2 class="section-title">
+          Education
+        </h2>
+
       </div>
+
 
       <div class="glass-card info-card reveal">
 
@@ -961,7 +995,9 @@
           <i class="fa-solid fa-graduation-cap"></i>
         </div>
 
-        <h3>Education Information</h3>
+        <h3>
+          Education Information
+        </h3>
 
         <p id="educationText">
           School: Ilshabari High School, Naogaon
@@ -972,18 +1008,28 @@
       </div>
 
     </div>
+
   </section>
 
 
   <!-- FAMILY -->
+
   <section id="family">
 
     <div class="container">
 
       <div class="section-head reveal">
-        <div class="section-label">Personal Life</div>
-        <h2 class="section-title">Family</h2>
+
+        <div class="section-label">
+          Personal Life
+        </div>
+
+        <h2 class="section-title">
+          Family
+        </h2>
+
       </div>
+
 
       <div class="glass-card info-card reveal">
 
@@ -991,7 +1037,9 @@
           <i class="fa-solid fa-people-roof"></i>
         </div>
 
-        <h3>My Family</h3>
+        <h3>
+          My Family
+        </h3>
 
         <p id="familyText">
           Family information will be available here.
@@ -1000,18 +1048,28 @@
       </div>
 
     </div>
+
   </section>
 
 
   <!-- INTERESTS -->
+
   <section id="interests">
 
     <div class="container">
 
       <div class="section-head reveal">
-        <div class="section-label">Things I Like</div>
-        <h2 class="section-title">Interests</h2>
+
+        <div class="section-label">
+          Things I Like
+        </div>
+
+        <h2 class="section-title">
+          Interests
+        </h2>
+
       </div>
+
 
       <div class="glass-card info-card reveal">
 
@@ -1019,7 +1077,9 @@
           <i class="fa-solid fa-star"></i>
         </div>
 
-        <h3>My Interests</h3>
+        <h3>
+          My Interests
+        </h3>
 
         <p id="interestsText">
           My interests and future goals will be available here.
@@ -1028,17 +1088,21 @@
       </div>
 
     </div>
+
   </section>
 
 
   <!-- CONTACT -->
+
   <section id="contact">
 
     <div class="container">
 
       <div class="section-head reveal">
 
-        <div class="section-label">Get In Touch</div>
+        <div class="section-label">
+          Get In Touch
+        </div>
 
         <h2 class="section-title">
           Contact
@@ -1060,13 +1124,21 @@
           </div>
 
           <div>
-            <small>Email</small>
 
-            <a id="emailLink" class="contact-value" href="#">
+            <small>
+              Email
+            </small>
+
+            <a
+              id="emailLink"
+              class="contact-value"
+              href="#"
+            >
               Not added yet
             </a>
 
           </div>
+
         </div>
 
 
@@ -1077,13 +1149,21 @@
           </div>
 
           <div>
-            <small>Phone</small>
 
-            <a id="phoneLink" class="contact-value" href="#">
+            <small>
+              Phone
+            </small>
+
+            <a
+              id="phoneLink"
+              class="contact-value"
+              href="#"
+            >
               Not added yet
             </a>
 
           </div>
+
         </div>
 
       </div>
@@ -1129,10 +1209,12 @@
       </div>
 
     </div>
+
   </section>
 
 
   <!-- FOOTER -->
+
   <footer>
 
     <p>
@@ -1144,11 +1226,9 @@
   </footer>
 
 
-  <script>
+  <!-- JAVASCRIPT -->
 
-    /* =====================================================
-       SUPABASE CONFIGURATION
-    ====================================================== */
+  <script>
 
     const SUPABASE_URL =
       "https://mwmgwkufuukvuqpadkck.supabase.co";
@@ -1156,17 +1236,12 @@
     const SUPABASE_ANON_KEY =
       "sb_publishable_dfYTZhLE8QzXuGN9X4MSVg_uaj4agD0";
 
-
     const supabaseClient =
       window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_ANON_KEY
       );
 
-
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
 
     const fullName =
       document.getElementById("fullName");
@@ -1208,14 +1283,12 @@
       document.getElementById("phoneLink");
 
 
-    /* =====================================================
-       HELPER
-    ====================================================== */
-
     function hasValue(value){
+
       return value !== null &&
              value !== undefined &&
              String(value).trim() !== "";
+
     }
 
 
@@ -1234,13 +1307,17 @@
 
       if(hasValue(url)){
 
-        let finalURL = String(url).trim();
+        let finalURL =
+          String(url).trim();
 
         if(
           !finalURL.startsWith("http://") &&
           !finalURL.startsWith("https://")
         ){
-          finalURL = "https://" + finalURL;
+
+          finalURL =
+            "https://" + finalURL;
+
         }
 
         element.href = finalURL;
@@ -1251,12 +1328,9 @@
         element.style.display = "none";
 
       }
+
     }
 
-
-    /* =====================================================
-       LOAD PROFILE FROM SUPABASE
-    ====================================================== */
 
     async function loadProfile(){
 
@@ -1300,11 +1374,13 @@
 
           }else{
 
-            fullName.textContent = name;
+            fullName.textContent =
+              name;
 
           }
 
-          profileImage.alt = name;
+          profileImage.alt =
+            name;
 
         }
 
@@ -1317,12 +1393,24 @@
         );
 
 
-        /* PROFILE PHOTO */
+        /*
+          PROFILE IMAGE
+
+          IMPORTANT:
+          The default image is profile.png.
+          If Supabase has a profile image URL,
+          Supabase image will be used.
+        */
 
         if(hasValue(data.profile_image)){
 
           profileImage.src =
             data.profile_image;
+
+        }else{
+
+          profileImage.src =
+            "profile.png";
 
         }
 
@@ -1417,10 +1505,7 @@
         );
 
 
-        /* INSTAGRAM
-           Your existing database field is:
-           Instagram_url
-        */
+        /* INSTAGRAM */
 
         setSocialLink(
           instagramLink,
@@ -1452,10 +1537,6 @@
     }
 
 
-    /* =====================================================
-       LOADING SCREEN
-    ====================================================== */
-
     function hideLoading(){
 
       const loading =
@@ -1463,20 +1544,18 @@
 
       if(!loading) return;
 
-      loading.style.opacity = "0";
+      loading.style.opacity =
+        "0";
 
       setTimeout(()=>{
 
-        loading.style.display = "none";
+        loading.style.display =
+          "none";
 
       },400);
 
     }
 
-
-    /* Safety:
-       Loading screen disappears even if network is slow.
-    */
 
     setTimeout(
       hideLoading,
@@ -1484,9 +1563,7 @@
     );
 
 
-    /* =====================================================
-       MOBILE MENU
-    ====================================================== */
+    /* MOBILE MENU */
 
     const menuBtn =
       document.getElementById("menuBtn");
@@ -1552,9 +1629,7 @@
       });
 
 
-    /* =====================================================
-       SCROLL REVEAL
-    ====================================================== */
+    /* SCROLL REVEAL */
 
     const observer =
       new IntersectionObserver(
@@ -1593,9 +1668,7 @@
       });
 
 
-    /* =====================================================
-       FOOTER YEAR
-    ====================================================== */
+    /* YEAR */
 
     document.getElementById(
       "year"
@@ -1603,9 +1676,7 @@
       new Date().getFullYear();
 
 
-    /* =====================================================
-       START
-    ====================================================== */
+    /* START */
 
     loadProfile();
 
