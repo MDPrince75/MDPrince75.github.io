@@ -1,776 +1,160 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="MD. Prince — Personal Profile">
-<meta name="author" content="MD. Prince">
-
-<title>MD. PRINCE — Personal Profile</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-</* ===== PREMIUM DESIGN UPGRADE ===== */
-
-.section-title{
-  position:relative;
-  display:inline-block;
-  font-size:32px;
-  font-weight:800;
-  letter-spacing:.5px;
-  margin-bottom:28px;
-}
-
-.section-title::after{
-  content:"";
-  display:block;
-  width:55px;
-  height:3px;
-  margin-top:7px;
-  border-radius:10px;
-  background:linear-gradient(90deg,#4da3ff,#8b5cf6);
-}
-
-.card{
-  background:linear-gradient(
-    145deg,
-    rgba(18,38,64,.92),
-    rgba(9,22,39,.96)
-  );
-  border:1px solid rgba(77,163,255,.25);
-  border-radius:22px;
-  padding:30px;
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.25),
-    inset 0 1px 0 rgba(255,255,255,.04);
-  line-height:1.9;
-  transition:transform .3s ease,
-             border-color .3s ease,
-             box-shadow .3s ease;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(77,163,255,.55);
-  box-shadow:0 22px 55px rgba(0,0,0,.35);
-}
-
-.item{
-  background:linear-gradient(
-    145deg,
-    rgba(16,36,60,.95),
-    rgba(8,22,39,.95)
-  );
-  border:1px solid rgba(77,163,255,.22);
-  border-radius:18px;
-  padding:22px;
-  transition:transform .3s ease,
-             border-color .3s ease;
-}
-
-.item:hover{
-  transform:translateY(-4px);
-  border-color:#4da3ff;
-}
-
-.item strong,
-.card strong{
-  color:#65b3ff;
-  font-weight:700;
-  letter-spacing:.3px;
-}
-
-#aboutContent,
-#careerContent,
-#educationContent,
-#familyContent,
-#interestsContent{
-  font-size:16px;
-  letter-spacing:.15px;
-}
-
-.hero{
-  position:relative;
-}
-
-.photo{
-  border:4px solid rgba(255,255,255,.95);
-  box-shadow:
-    0 0 0 7px rgba(77,163,255,.10),
-    0 20px 55px rgba(0,0,0,.45);
-}
-
-.tag{
-  display:inline-block;
-  padding:7px 16px;
-  margin-top:4px;
-  border-radius:30px;
-  background:rgba(77,163,255,.10);
-  border:1px solid rgba(77,163,255,.25);
-  color:#66b4ff;
-}
-
-.btn{
-  font-weight:600;
-  border:1px solid rgba(77,163,255,.30);
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  border-color:#4da3ff;
-}
-
-section{
-  padding:65px 0;
-}>
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:linear-gradient(180deg,#07111f,#0a1627,#07111f);
-  color:#f4f7fb;
-  line-height:1.7;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-.wrap{
-  max-width:1050px;
-  margin:auto;
-  padding:0 22px;
-}
-
-nav{
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(7,17,31,.95);
-  border-bottom:1px solid #1e3350;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:66px;
-}
-
-.brand{
-  font-weight:800;
-  letter-spacing:1px;
-}
-
-.links{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.links a{
-  color:#aebbd0;
-  font-size:14px;
-}
-
-.hero{
-  padding:80px 0 60px;
-  text-align:center;
-}
-
-.photo{
-  width:155px;
-  height:155px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid white;
-  box-shadow:0 18px 50px rgba(0,0,0,.35);
-
-</style>
-
-</head>
-
-<body>
-
-
-<nav>
-
-<div class="wrap nav">
-
-<div class="brand">
-MD. PRINCE
-</div>
-
-<div class="links">
-
-<a href="#about">About</a>
-<a href="#career">Career</a>
-<a href="#education">Education</a>
-<a href="#family">Family</a>
-<a href="#interests">Interests</a>
-<a href="#contact">Contact</a>
-
-</div>
-
-</div>
-
-</nav>
-
-
-<header class="hero">
-
-<div class="wrap">
-
-<img
-  class="photo"
-  id="profilePhoto"
-  src="profile.png"
-  alt="MD. Prince"
->
-
-<h1 id="profileName">
-MD. PRINCE
-</h1>
-
-<div class="tag" id="jobTitle">
-Customer Support & Operations Executive
-</div>
-
-<p class="intro">
-Welcome to my personal profile. I am focused on customer support,
-operations, professional growth and building my own future.
-</p>
-
-</div>
-
-</header>
-
-
-<main class="wrap">
-
-
-<section id="about">
-
-<h2 class="section-title">
-About Me
-</h2>
-
-<div class="card" id="aboutContent">
-
-আমি বর্তমানে Box2Go International Courier-এ Customer Support ও Operations Executive হিসেবে কাজ করি। মানুষের সাথে যোগাযোগ, কাস্টমার সাপোর্ট ও অপারেশনাল কাজের মাধ্যমে প্রতিনিয়ত নতুন কিছু শিখতে চেষ্টা করি।
-
-আমার ভবিষ্যতের লক্ষ্য হলো নিজের একটি কুরিয়ার সার্ভিস প্রতিষ্ঠা করা এবং নিজের পরিচয়ে একটি সফল ব্যবসা গড়ে তোলা। জীবনে আমার পরিবারের সুখ ও ভবিষ্যৎকে অনেক গুরুত্ব দিই। বাবা-মাকে নিয়ে একটি সুন্দর ও স্বচ্ছন্দ জীবন গড়ে তুলতে চাই। পাশাপাশি আমার প্রিয় মানুষকে সঙ্গে নিয়ে ভালোবাসা, বিশ্বাস ও সম্মানের ভিত্তিতে একটি সুন্দর পরিবার ও সংসার গড়ে তোলাই আমার অন্যতম স্বপ্ন।
-
-</div>
-
-</section>
-
-
-<section id="career">
-
-<h2 class="section-title">
-Career
-</h2>
-
-<div class="grid">
-
-<div class="item">
-
-<strong>Company</strong>
-
-<span>
-Box2Go International Courier
-</span>
-
-</div>
-
-
-<div class="item">
-
-<strong>Position</strong>
-
-<span id="careerPosition">
-Customer Support & Operations Executive
-</span>
-
-</div>
-
-
-<div class="item">
-
-<strong>Current Role</strong>
-
-<span>
-Currently employed
-</span>
-
-</div>
-
-
-<div class="item">
-
-<strong>Future Goal</strong>
-
-<span>
-নিজের একটি Courier Service প্রতিষ্ঠা করে সফলভাবে পরিচালনা করা।
-</span>
-
-</div>
-
-</div>
-
-
-<div class="card" style="margin-top:20px">
-
-<strong>Key Responsibilities</strong>
-
-<ul>
-
-<li>Customer support and customer communication</li>
-
-<li>Parcel booking and shipment coordination</li>
-
-<li>Pickup and delivery coordination</li>
-
-<li>Shipping information and quotation support</li>
-
-<li>Parcel updates</li>
-
-<li>Daily operational coordination</li>
-
-</ul>
-
-</div>
-
-
-<div
-  class="card"
-  id="careerContent"
-  style="margin-top:20px; display:none;"
-></div>
-
-</section>
-
-
-<section id="education">
-
-<h2 class="section-title">
-Education
-</h2>
-
-<div class="card" id="educationContent">
-
-<strong>School:</strong>
-Ilshabari High School, Naogaon
-
-<strong>Board:</strong>
-Rajshahi Education Board
-
-<strong>SSC:</strong>
-Registered candidate — 2026
-
-</div>
-
-</section>
-
-
-<section id="family">
-
-<h2 class="section-title">
-Family
-</h2>
-
-
-<div class="grid" id="defaultFamily">
-
-
-<div class="item">
-
-<strong>Father</strong>
-
-<span>
-Md. Mahmud Alo
-</span>
-
-<div class="muted">
-JCB Operator — NOVOAIR, Hazrat Shahjalal International Airport, Dhaka
-</div>
-
-</div>
-
-
-<div class="item">
-
-<strong>Mother</strong>
-
-<span>
-MST. Shamli Begum
-</span>
-
-</div>
-
-
-<div class="item">
-
-<strong>Brother</strong>
-
-<span>
-Md. Diyasan Pranto
-</span>
-
-<div class="muted">
-Accounts, ASM International Courier Service
-</div>
-
-</div>
-
-
-</div>
-
-
-<div
-  class="card"
-  id="familyContent"
-  style="display:none;"
-></div>
-
-</section>
-
-
-<section id="interests">
-
-<h2 class="section-title">
-Interests
-</h2>
-
-<div class="card" id="interestsContent">
-
-• Courier business and entrepreneurship
-
-• Customer service and communication
-
-• Business growth
-
-• Personal development
-
-• Family and a comfortable future
-
-</div>
-
-</section>
-
-
-<section id="contact">
-
-<h2 class="section-title">
-Contact
-</h2>
-
-<div class="card">
-
-<div id="contactDetails"></div>
-
-<div class="contact">
-
-<a
-  class="btn"
-  id="facebookLink"
-  href="#"
-  target="_blank"
-  rel="noopener noreferrer"
->
-Facebook
-</a>
-
-<a
-  class="btn"
-  id="instagramLink"
-  href="#"
-  target="_blank"
-  rel="noopener noreferrer"
->
-Instagram
-</a>
-
-<a
-  class="btn"
-  id="whatsappLink"
-  href="#"
-  target="_blank"
-  rel="noopener noreferrer"
->
-WhatsApp
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-</main>
-
-
-<footer>
-
-© 2026 MD. PRINCE — Personal Profile
-
-</footer>
-
-
-<script>
-
-/* ==============================
-   SUPABASE CONNECTION
-================================ */
-
-const SUPABASE_URL =
-"https://mwmgwkufuukvuqpadkck.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_dfYTZhLE8QzXuGN9X4MSVg_uaj4agD0";
-
-const supabaseClient =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-
-/* ==============================
-   LOAD PROFILE
-================================ */
-
-async function loadProfile(){
-
-  const { data, error } =
-  await supabaseClient
-    .from("profile")
-    .select("*")
-    .eq("id",1)
-    .single();
-
-
-  if(error){
-
-    console.error(
-      "Profile load failed:",
-      error
-    );
-
-    return;
-  }
-
-
-  /* NAME */
-
-  if(data.full_name){
-
-    document.getElementById(
-      "profileName"
-    ).textContent =
-      data.full_name;
-
-  }
-
-
-  /* JOB TITLE */
-
-  if(data.job_title){
-
-    document.getElementById(
-      "jobTitle"
-    ).textContent =
-      data.job_title;
-
-    document.getElementById(
-      "careerPosition"
-    ).textContent =
-      data.job_title;
-
-  }
-
-
-  /* PROFILE PHOTO */
-
-  if(data.profile_image){
-
-    document.getElementById(
-      "profilePhoto"
-    ).src =
-      data.profile_image;
-
-  }
-
-
-  /* ABOUT */
-
-  if(data.about_me){
-
-    document.getElementById(
-      "aboutContent"
-    ).textContent =
-      data.about_me;
-
-  }
-
-
-  /* CAREER */
-
-  if(data.career){
-
-    const career =
-      document.getElementById(
-        "careerContent"
-      );
-
-    career.textContent =
-      data.career;
-
-    career.style.display =
-      "block";
-
-  }
-
-
-  /* EDUCATION */
-
-  if(data.education){
-
-    document.getElementById(
-      "educationContent"
-    ).textContent =
-      data.education;
-
-  }
-
-
-  /* FAMILY */
-
-  if(data.family){
-
-    document.getElementById(
-      "defaultFamily"
-    ).style.display =
-      "none";
-
-    const family =
-      document.getElementById(
-        "familyContent"
-      );
-
-    family.textContent =
-      data.family;
-
-    family.style.display =
-      "block";
-
-  }
-
-
-  /* INTERESTS */
-
-  if(data.interests){
-
-    document.getElementById(
-      "interestsContent"
-    ).textContent =
-      data.interests;
-
-  }
-
-
-  /* FACEBOOK */
-
-  if(data.facebook_url){
-
-    document.getElementById(
-      "facebookLink"
-    ).href =
-      data.facebook_url;
-
-  }
-
-
-  /* INSTAGRAM */
-
-  if(data.Instagram_url){
-
-    document.getElementById(
-      "instagramLink"
-    ).href =
-      data.Instagram_url;
-
-  }
-
-
-  /* WHATSAPP */
-
-  if(data.whatsapp_url){
-
-    document.getElementById(
-      "whatsappLink"
-    ).href =
-      data.whatsapp_url;
-
-  }
-
-
-  /* CONTACT DETAILS */
-
-  const contactDetails =
-    document.getElementById(
-      "contactDetails"
-    );
-
-
-  let contactHTML = "";
-
-
-  if(data.email){
-
-    contactHTML +=
-      "<p><strong>Email:</strong> " +
-      data.email +
-      "</p>";
-
-  }
-
-
-  if(data.phone){
-
-    contactHTML +=
-      "<p><strong>Phone:</strong> " +
-      data.phone +
-      "</p>";
-
-  }
-
-
-  contactDetails.innerHTML =
-    contactHTML;
-
-}
-
-
-/* START */
-
-loadProfile();
-
-</script>
-
-
-</body>
-</html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MD. PRINCE — Personal Profile</title>
+
+  <meta name="description"
+        content="Official personal profile website of MD. PRINCE — Customer Support & Operations Executive.">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+
+    /* =====================================================
+       BASIC
+    ====================================================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(45,212,191,.09), transparent 25%),
+        radial-gradient(circle at 90% 20%, rgba(59,130,246,.10), transparent 25%),
+        linear-gradient(135deg,#050816,#081120,#0a1020);
+      color:#f8fafc;
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    section{
+      padding:95px 7%;
+      scroll-margin-top:80px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* =====================================================
+       SCROLL BAR
+    ====================================================== */
+
+    ::-webkit-scrollbar{
+      width:8px;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#050816;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:linear-gradient(#2dd4bf,#3b82f6);
+      border-radius:20px;
+    }
+
+    /* =====================================================
+       NAVBAR
+    ====================================================== */
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:9999;
+
+      background:rgba(5,8,22,.75);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    nav{
+      max-width:1250px;
+      margin:auto;
+      height:72px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:0 6%;
+    }
+
+    .logo{
+      font-family:'Poppins',sans-serif;
+      font-size:23px;
+      font-weight:800;
+      letter-spacing:.5px;
+      white-space:nowrap;
+    }
+
+    .logo span{
+      color:#2dd4bf;
+    }
+
+    .nav-links{
+      display:flex;
+      list-style:none;
+      align-items:center;
+      gap:26px;
+    }
+
+    .nav-links a{
+      color:#cbd5e1;
+      font-size:14px;
+      font-weight:600;
+      transition:.3s;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-7px;
+      width:0;
+      height:2px;
+      border-radius:10px;
+      background:#2dd4bf;
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:#fff;
+    }
+
+    .
