@@ -5,22 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MD. PRINCE — Personal Profile</title>
-
-  <meta name="description"
-        content="Personal profile website of MD. PRINCE — Customer Support & Operations Executive.">
+  <meta name="description" content="Personal profile website of MD. PRINCE — Customer Support & Operations Executive.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-
     *{
       margin:0;
       padding:0;
@@ -33,13 +28,22 @@
 
     body{
       font-family:'Inter',sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%,rgba(45,212,191,.09),transparent 25%),
-        radial-gradient(circle at 90% 20%,rgba(59,130,246,.10),transparent 25%),
-        linear-gradient(135deg,#050816,#081120,#0a1020);
+      background:#050816;
       color:#f8fafc;
       line-height:1.7;
       overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(circle at 10% 20%,rgba(45,212,191,.10),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(59,130,246,.11),transparent 28%),
+        radial-gradient(circle at 50% 90%,rgba(139,92,246,.08),transparent 30%),
+        linear-gradient(135deg,#050816,#081120,#070b18);
     }
 
     a{
@@ -57,8 +61,9 @@
     }
 
     section{
-      padding:95px 7%;
-      scroll-margin-top:80px;
+      padding:100px 7%;
+      scroll-margin-top:75px;
+      position:relative;
     }
 
     .container{
@@ -84,6 +89,88 @@
       border-radius:20px;
     }
 
+    /* BACKGROUND ORBS */
+
+    .orb{
+      position:fixed;
+      border-radius:50%;
+      filter:blur(90px);
+      opacity:.13;
+      pointer-events:none;
+      z-index:-2;
+      animation:orbMove 12s ease-in-out infinite alternate;
+    }
+
+    .orb-one{
+      width:300px;
+      height:300px;
+      background:#2dd4bf;
+      top:12%;
+      left:-100px;
+    }
+
+    .orb-two{
+      width:340px;
+      height:340px;
+      background:#3b82f6;
+      right:-130px;
+      top:35%;
+      animation-delay:2s;
+    }
+
+    .orb-three{
+      width:280px;
+      height:280px;
+      background:#8b5cf6;
+      bottom:-100px;
+      left:40%;
+      animation-delay:4s;
+    }
+
+    @keyframes orbMove{
+      from{
+        transform:translate(0,0) scale(1);
+      }
+      to{
+        transform:translate(35px,45px) scale(1.12);
+      }
+    }
+
+    /* LOADING */
+
+    #loading{
+      position:fixed;
+      inset:0;
+      background:#050816;
+      z-index:99999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:17px;
+      transition:.5s;
+    }
+
+    .loader{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      border:3px solid rgba(255,255,255,.1);
+      border-top-color:#2dd4bf;
+      border-right-color:#3b82f6;
+      animation:spin .8s linear infinite;
+    }
+
+    #loading p{
+      color:#94a3b8;
+      font-size:13px;
+      letter-spacing:.5px;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg);}
+    }
+
     /* NAVBAR */
 
     header{
@@ -92,9 +179,9 @@
       left:0;
       width:100%;
       z-index:9999;
-      background:rgba(5,8,22,.78);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
+      background:rgba(5,8,22,.70);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
       border-bottom:1px solid rgba(255,255,255,.07);
     }
 
@@ -117,22 +204,24 @@
     }
 
     .logo span{
-      color:#2dd4bf;
+      background:linear-gradient(90deg,#2dd4bf,#60a5fa);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
     .nav-links{
       display:flex;
       list-style:none;
       align-items:center;
-      gap:23px;
+      gap:22px;
     }
 
     .nav-links a{
       color:#cbd5e1;
       font-size:13px;
       font-weight:600;
-      transition:.3s;
       position:relative;
+      transition:.3s;
     }
 
     .nav-links a::after{
@@ -142,23 +231,25 @@
       bottom:-7px;
       width:0;
       height:2px;
-      border-radius:10px;
-      background:#2dd4bf;
+      border-radius:20px;
+      background:linear-gradient(90deg,#2dd4bf,#3b82f6);
       transition:.3s;
     }
 
-    .nav-links a:hover{
+    .nav-links a:hover,
+    .nav-links a.active-link{
       color:#fff;
     }
 
-    .nav-links a:hover::after{
+    .nav-links a:hover::after,
+    .nav-links a.active-link::after{
       width:100%;
     }
 
     .admin-link{
-      border:1px solid rgba(45,212,191,.45);
+      border:1px solid rgba(45,212,191,.4);
       padding:8px 13px;
-      border-radius:9px;
+      border-radius:10px;
       color:#2dd4bf !important;
     }
 
@@ -169,13 +260,13 @@
     .admin-link:hover{
       background:#2dd4bf;
       color:#04111b !important;
+      box-shadow:0 0 25px rgba(45,212,191,.2);
     }
 
     .menu-btn{
       display:none;
       cursor:pointer;
       font-size:24px;
-      color:#fff;
     }
 
     /* HERO */
@@ -184,29 +275,14 @@
       min-height:100vh;
       display:flex;
       align-items:center;
-      padding-top:110px;
-      position:relative;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      width:420px;
-      height:420px;
-      border-radius:50%;
-      background:#2dd4bf;
-      filter:blur(190px);
-      opacity:.08;
-      left:-150px;
-      top:100px;
-      pointer-events:none;
+      padding-top:120px;
     }
 
     .hero-grid{
       width:100%;
       display:grid;
       grid-template-columns:1.15fr .85fr;
-      gap:65px;
+      gap:70px;
       align-items:center;
     }
 
@@ -218,38 +294,61 @@
       font-size:14px;
       font-weight:700;
       margin-bottom:15px;
-      letter-spacing:.6px;
+      letter-spacing:1px;
       text-transform:uppercase;
     }
 
     .hello::before{
       content:"";
-      width:28px;
+      width:30px;
       height:2px;
       background:#2dd4bf;
-      border-radius:20px;
     }
 
     .hero h1{
       font-family:'Poppins',sans-serif;
-      font-size:clamp(42px,6vw,72px);
-      line-height:1.08;
+      font-size:clamp(43px,6vw,73px);
+      line-height:1.07;
       font-weight:800;
-      margin-bottom:15px;
+      margin-bottom:14px;
     }
 
     .hero h1 span{
-      background:linear-gradient(90deg,#2dd4bf,#60a5fa);
+      background:linear-gradient(90deg,#2dd4bf,#60a5fa,#a78bfa);
+      background-size:200%;
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      background-clip:text;
+      animation:gradientText 5s linear infinite;
+    }
+
+    @keyframes gradientText{
+      0%{background-position:0%;}
+      100%{background-position:200%;}
     }
 
     .job-title{
       font-size:20px;
       font-weight:600;
       color:#cbd5e1;
-      margin-bottom:20px;
+      margin-bottom:8px;
+    }
+
+    .typing-wrapper{
+      height:31px;
+      margin-bottom:18px;
+      color:#2dd4bf;
+      font-weight:700;
+      font-size:15px;
+    }
+
+    #typingText::after{
+      content:"|";
+      margin-left:3px;
+      animation:blink .7s infinite;
+    }
+
+    @keyframes blink{
+      50%{opacity:0;}
     }
 
     .hero-description{
@@ -270,22 +369,22 @@
       align-items:center;
       justify-content:center;
       gap:9px;
-      padding:12px 21px;
-      border-radius:10px;
+      padding:13px 22px;
+      border-radius:11px;
       font-size:14px;
       font-weight:700;
       transition:.3s;
-      cursor:pointer;
     }
 
     .btn-primary{
       background:linear-gradient(135deg,#2dd4bf,#3b82f6);
       color:#04111b;
-      box-shadow:0 12px 35px rgba(45,212,191,.16);
+      box-shadow:0 12px 35px rgba(45,212,191,.17);
     }
 
     .btn-primary:hover{
-      transform:translateY(-3px);
+      transform:translateY(-4px);
+      box-shadow:0 16px 40px rgba(45,212,191,.24);
     }
 
     .btn-outline{
@@ -297,10 +396,10 @@
     .btn-outline:hover{
       border-color:#2dd4bf;
       color:#2dd4bf;
-      transform:translateY(-3px);
+      transform:translateY(-4px);
     }
 
-    /* PROFILE PHOTO */
+    /* PROFILE */
 
     .hero-image-wrap{
       display:flex;
@@ -309,23 +408,59 @@
     }
 
     .profile-ring{
-      width:350px;
-      height:350px;
+      width:355px;
+      height:355px;
       padding:8px;
       border-radius:50%;
-      background:linear-gradient(135deg,#2dd4bf,#3b82f6,#8b5cf6);
       position:relative;
+      background:linear-gradient(135deg,#2dd4bf,#3b82f6,#8b5cf6,#2dd4bf);
+      background-size:300% 300%;
+      animation:ringGradient 7s ease infinite, floatPhoto 5s ease-in-out infinite;
       box-shadow:
-        0 0 70px rgba(45,212,191,.13),
-        0 25px 70px rgba(0,0,0,.35);
+        0 0 75px rgba(45,212,191,.14),
+        0 25px 70px rgba(0,0,0,.4);
+    }
+
+    @keyframes ringGradient{
+      0%{background-position:0 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0 50%;}
+    }
+
+    @keyframes floatPhoto{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
+
+    .profile-ring::before,
+    .profile-ring::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
     }
 
     .profile-ring::before{
-      content:"";
-      position:absolute;
-      inset:-17px;
-      border:1px solid rgba(45,212,191,.18);
-      border-radius:50%;
+      inset:-18px;
+      border:1px solid rgba(45,212,191,.2);
+      animation:pulseRing 2.8s ease-in-out infinite;
+    }
+
+    .profile-ring::after{
+      inset:-35px;
+      border:1px dashed rgba(96,165,250,.12);
+      animation:rotateRing 20s linear infinite;
+    }
+
+    @keyframes pulseRing{
+      50%{
+        transform:scale(1.03);
+        opacity:.45;
+      }
+    }
+
+    @keyframes rotateRing{
+      to{transform:rotate(360deg);}
     }
 
     .profile-image{
@@ -338,10 +473,10 @@
       border:7px solid #081120;
     }
 
-    /* SECTION */
+    /* SECTIONS */
 
     .section-head{
-      margin-bottom:40px;
+      margin-bottom:42px;
     }
 
     .section-label{
@@ -354,12 +489,10 @@
     }
 
     .section-title{
-      position:relative;
       display:inline-block;
       font-family:'Poppins',sans-serif;
-      font-size:32px;
+      font-size:33px;
       font-weight:800;
-      letter-spacing:.3px;
       margin-bottom:15px;
     }
 
@@ -378,26 +511,24 @@
       max-width:680px;
     }
 
-    /* CARDS */
+    /* GLASS CARD */
 
     .glass-card{
-      background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.025)
-      );
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:20px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.085);
+      border-radius:22px;
       padding:30px;
-      box-shadow:0 18px 55px rgba(0,0,0,.17);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      transition:.35s;
+      box-shadow:0 18px 60px rgba(0,0,0,.19);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      transition:transform .35s,border-color .35s,box-shadow .35s;
     }
 
     .glass-card:hover{
-      transform:translateY(-5px);
-      border-color:rgba(45,212,191,.25);
+      transform:translateY(-6px);
+      border-color:rgba(45,212,191,.28);
+      box-shadow:0 22px 70px rgba(0,0,0,.27);
     }
 
     /* ABOUT */
@@ -430,6 +561,7 @@
       background:rgba(45,212,191,.09);
       border:1px solid rgba(45,212,191,.2);
       margin-bottom:20px;
+      box-shadow:0 0 30px rgba(45,212,191,.08);
     }
 
     .about-icon-box h3{
@@ -447,13 +579,7 @@
       white-space:pre-line;
     }
 
-    /* INFORMATION */
-
-    .cards-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-    }
+    /* INFO */
 
     .info-card{
       position:relative;
@@ -463,20 +589,20 @@
     .info-card::before{
       content:"";
       position:absolute;
-      width:90px;
-      height:90px;
+      width:120px;
+      height:120px;
       border-radius:50%;
       background:#2dd4bf;
-      filter:blur(60px);
+      filter:blur(80px);
       opacity:.08;
-      right:-20px;
-      top:-20px;
+      right:-30px;
+      top:-30px;
     }
 
     .card-icon{
-      width:52px;
-      height:52px;
-      border-radius:14px;
+      width:54px;
+      height:54px;
+      border-radius:15px;
       background:rgba(45,212,191,.09);
       color:#2dd4bf;
       display:flex;
@@ -497,6 +623,78 @@
       color:#aebdce;
       font-size:15px;
       white-space:pre-line;
+    }
+
+    /* VIDEO / STORY */
+
+    .story-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:25px;
+      align-items:stretch;
+    }
+
+    .video-card{
+      padding:12px;
+      overflow:hidden;
+    }
+
+    .video-container{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:15px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(45,212,191,.12),transparent 45%),
+        #030712;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .video-container video,
+    .video-container iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      object-fit:cover;
+    }
+
+    .video-placeholder{
+      text-align:center;
+      color:#94a3b8;
+      padding:30px;
+    }
+
+    .video-placeholder i{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:70px;
+      height:70px;
+      margin:0 auto 15px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#2dd4bf,#3b82f6);
+      color:#04111b;
+      font-size:25px;
+      box-shadow:0 0 35px rgba(45,212,191,.2);
+    }
+
+    .story-content{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .story-content h3{
+      font-family:'Poppins',sans-serif;
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    .story-content p{
+      color:#aebdce;
     }
 
     /* CONTACT */
@@ -550,8 +748,8 @@
     }
 
     .social-btn{
-      width:48px;
-      height:48px;
+      width:49px;
+      height:49px;
       border-radius:14px;
       display:flex;
       align-items:center;
@@ -564,10 +762,10 @@
     }
 
     .social-btn:hover{
-      background:#2dd4bf;
-      border-color:#2dd4bf;
+      background:linear-gradient(135deg,#2dd4bf,#3b82f6);
+      border-color:transparent;
       color:#04111b;
-      transform:translateY(-4px);
+      transform:translateY(-5px) scale(1.05);
     }
 
     /* FOOTER */
@@ -575,7 +773,7 @@
     footer{
       border-top:1px solid rgba(255,255,255,.07);
       background:rgba(3,7,18,.65);
-      padding:30px 7%;
+      padding:31px 7%;
       text-align:center;
       color:#64748b;
       font-size:13px;
@@ -586,47 +784,14 @@
       font-weight:700;
     }
 
-    /* LOADING */
-
-    #loading{
-      position:fixed;
-      inset:0;
-      background:#050816;
-      z-index:99999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:16px;
-      transition:.4s;
-    }
-
-    .loader{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      border:3px solid rgba(255,255,255,.1);
-      border-top-color:#2dd4bf;
-      animation:spin .8s linear infinite;
-    }
-
-    #loading p{
-      color:#94a3b8;
-      font-size:13px;
-    }
-
-    @keyframes spin{
-      to{
-        transform:rotate(360deg);
-      }
-    }
-
-    /* ANIMATION */
+    /* REVEAL */
 
     .reveal{
       opacity:0;
-      transform:translateY(25px);
-      transition:.7s ease;
+      transform:translateY(35px);
+      transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.7,.2,1);
     }
 
     .reveal.active{
@@ -676,7 +841,7 @@
 
       .hero-grid{
         grid-template-columns:1fr;
-        gap:45px;
+        gap:50px;
       }
 
       .hero-content{
@@ -706,7 +871,7 @@
       }
 
       .about-grid,
-      .cards-grid,
+      .story-grid,
       .contact-grid{
         grid-template-columns:1fr;
       }
@@ -734,6 +899,10 @@
         font-size:17px;
       }
 
+      .typing-wrapper{
+        font-size:13px;
+      }
+
       .profile-ring{
         width:235px;
         height:235px;
@@ -747,6 +916,10 @@
         padding:23px;
       }
 
+      .video-card{
+        padding:9px;
+      }
+
       .hero-buttons{
         flex-direction:column;
       }
@@ -756,23 +929,32 @@
       }
     }
 
+    @media(prefers-reduced-motion:reduce){
+      *,
+      *::before,
+      *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- LOADING -->
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="orb orb-three"></div>
 
   <div id="loading">
     <div class="loader"></div>
     <p>Loading profile...</p>
   </div>
 
-
   <!-- NAVBAR -->
 
   <header>
-
     <nav>
 
       <a href="#home" class="logo">
@@ -785,902 +967,4 @@
         <li><a href="#about">About</a></li>
         <li><a href="#career">Career</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="#family">Family</a></li>
-        <li><a href="#interests">Interests</a></li>
-        <li><a href="#contact">Contact</a></li>
-
-        <li>
-          <a href="admin.html" class="admin-link">
-            <i class="fa-solid fa-lock"></i>
-            Admin
-          </a>
-        </li>
-
-      </ul>
-
-      <div class="menu-btn" id="menuBtn">
-        <i class="fa-solid fa-bars"></i>
-      </div>
-
-    </nav>
-
-  </header>
-
-
-  <!-- HERO -->
-
-  <section class="hero" id="home">
-
-    <div class="container hero-grid">
-
-      <div class="hero-content reveal">
-
-        <div class="hello">
-          Hello, I'm
-        </div>
-
-        <h1 id="fullName">
-          MD. <span>PRINCE</span>
-        </h1>
-
-        <div class="job-title" id="jobTitle">
-          Customer Support & Operations Executive
-        </div>
-
-        <p class="hero-description">
-          Welcome to my personal profile. Here you can learn more
-          about me, my career, education, interests and contact information.
-        </p>
-
-        <div class="hero-buttons">
-
-          <a href="#about" class="btn btn-primary">
-            <i class="fa-solid fa-user"></i>
-            About Me
-          </a>
-
-          <a href="#contact" class="btn btn-outline">
-            <i class="fa-solid fa-envelope"></i>
-            Contact Me
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- PROFILE IMAGE -->
-
-      <div class="hero-image-wrap reveal">
-
-        <div class="profile-ring">
-
-          <img
-            id="profileImage"
-            class="profile-image"
-            src="profile.png"
-            alt="MD. PRINCE"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ABOUT -->
-
-  <section id="about">
-
-    <div class="container">
-
-      <div class="section-head reveal">
-
-        <div class="section-label">
-          Introduction
-        </div>
-
-        <h2 class="section-title">
-          About Me
-        </h2>
-
-        <p class="section-subtitle">
-          A little information about who I am and what I do.
-        </p>
-
-      </div>
-
-
-      <div class="about-grid">
-
-        <div class="glass-card about-icon-box reveal">
-
-          <div class="big-icon">
-            <i class="fa-solid fa-user-tie"></i>
-          </div>
-
-          <h3>
-            Personal Profile
-          </h3>
-
-          <p>
-            Customer Support<br>
-            Operations<br>
-            International Courier
-          </p>
-
-        </div>
-
-
-        <div class="glass-card reveal">
-
-          <p class="about-text" id="aboutMe">
-            I currently work at Box2Go International Courier as a Customer Support & Operations Executive. My responsibilities include assisting customers, providing international shipping information, handling parcel booking and shipment-related queries, and supporting day-to-day courier operations.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CAREER -->
-
-  <section id="career">
-
-    <div class="container">
-
-      <div class="section-head reveal">
-
-        <div class="section-label">
-          Professional Journey
-        </div>
-
-        <h2 class="section-title">
-          Career & Experience
-        </h2>
-
-      </div>
-
-
-      <div class="glass-card info-card reveal">
-
-        <div class="card-icon">
-          <i class="fa-solid fa-briefcase"></i>
-        </div>
-
-        <h3>
-          My Career
-        </h3>
-
-        <p id="careerText">
-          I am currently working in the international courier industry, gaining practical experience in customer support, parcel booking, international shipping information and day-to-day courier operations.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- EDUCATION -->
-
-  <section id="education">
-
-    <div class="container">
-
-      <div class="section-head reveal">
-
-        <div class="section-label">
-          Academic Background
-        </div>
-
-        <h2 class="section-title">
-          Education
-        </h2>
-
-      </div>
-
-
-      <div class="glass-card info-card reveal">
-
-        <div class="card-icon">
-          <i class="fa-solid fa-graduation-cap"></i>
-        </div>
-
-        <h3>
-          Education Information
-        </h3>
-
-        <p id="educationText">
-          School: Ilshabari High School, Naogaon
-          Board: Rajshahi Education Board
-          SSC: Registered Candidate — 2026
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FAMILY -->
-
-  <section id="family">
-
-    <div class="container">
-
-      <div class="section-head reveal">
-
-        <div class="section-label">
-          Personal Life
-        </div>
-
-        <h2 class="section-title">
-          Family
-        </h2>
-
-      </div>
-
-
-      <div class="glass-card info-card reveal">
-
-        <div class="card-icon">
-          <i class="fa-solid fa-people-roof"></i>
-        </div>
-
-        <h3>
-          My Family
-        </h3>
-
-        <p id="familyText">
-          Family information will be available here.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- INTERESTS -->
-
-  <section id="interests">
-
-    <div class="container">
-
-      <div class="section-head reveal">
-
-        <div class="section-label">
-          Things I Like
-        </div>
-
-        <h2 class="section-title">
-          Interests
-        </h2>
-
-      </div>
-
-
-      <div class="glass-card info-card reveal">
-
-        <div class="card-icon">
-          <i class="fa-solid fa-star"></i>
-        </div>
-
-        <h3>
-          My Interests
-        </h3>
-
-        <p id="interestsText">
-          My interests and future goals will be available here.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-    <div class="container">
-
-      <div class="section-head reveal">
-
-        <div class="section-label">
-          Get In Touch
-        </div>
-
-        <h2 class="section-title">
-          Contact
-        </h2>
-
-        <p class="section-subtitle">
-          You can contact or connect with me through the information below.
-        </p>
-
-      </div>
-
-
-      <div class="contact-grid">
-
-        <div class="glass-card contact-item reveal">
-
-          <div class="contact-icon">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-
-          <div>
-
-            <small>
-              Email
-            </small>
-
-            <a
-              id="emailLink"
-              class="contact-value"
-              href="#"
-            >
-              Not added yet
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div class="glass-card contact-item reveal">
-
-          <div class="contact-icon">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-
-          <div>
-
-            <small>
-              Phone
-            </small>
-
-            <a
-              id="phoneLink"
-              class="contact-value"
-              href="#"
-            >
-              Not added yet
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="social-wrap reveal">
-
-        <a
-          id="facebookLink"
-          class="social-btn"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Facebook"
-        >
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-
-
-        <a
-          id="instagramLink"
-          class="social-btn"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Instagram"
-        >
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-
-
-        <a
-          id="whatsappLink"
-          class="social-btn"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="WhatsApp"
-        >
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <p>
-      © <span id="year"></span>
-      <span>MD. PRINCE</span>.
-      All Rights Reserved.
-    </p>
-
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
-
-  <script>
-
-    const SUPABASE_URL =
-      "https://mwmgwkufuukvuqpadkck.supabase.co";
-
-    const SUPABASE_ANON_KEY =
-      "sb_publishable_dfYTZhLE8QzXuGN9X4MSVg_uaj4agD0";
-
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
-      );
-
-
-    const fullName =
-      document.getElementById("fullName");
-
-    const jobTitle =
-      document.getElementById("jobTitle");
-
-    const profileImage =
-      document.getElementById("profileImage");
-
-    const aboutMe =
-      document.getElementById("aboutMe");
-
-    const careerText =
-      document.getElementById("careerText");
-
-    const educationText =
-      document.getElementById("educationText");
-
-    const familyText =
-      document.getElementById("familyText");
-
-    const interestsText =
-      document.getElementById("interestsText");
-
-    const facebookLink =
-      document.getElementById("facebookLink");
-
-    const instagramLink =
-      document.getElementById("instagramLink");
-
-    const whatsappLink =
-      document.getElementById("whatsappLink");
-
-    const emailLink =
-      document.getElementById("emailLink");
-
-    const phoneLink =
-      document.getElementById("phoneLink");
-
-
-    function hasValue(value){
-
-      return value !== null &&
-             value !== undefined &&
-             String(value).trim() !== "";
-
-    }
-
-
-    function setText(element,value){
-
-      if(element && hasValue(value)){
-        element.textContent = value;
-      }
-
-    }
-
-
-    function setSocialLink(element,url){
-
-      if(!element) return;
-
-      if(hasValue(url)){
-
-        let finalURL =
-          String(url).trim();
-
-        if(
-          !finalURL.startsWith("http://") &&
-          !finalURL.startsWith("https://")
-        ){
-
-          finalURL =
-            "https://" + finalURL;
-
-        }
-
-        element.href = finalURL;
-        element.style.display = "flex";
-
-      }else{
-
-        element.style.display = "none";
-
-      }
-
-    }
-
-
-    async function loadProfile(){
-
-      try{
-
-        const { data, error } =
-          await supabaseClient
-            .from("profile")
-            .select("*")
-            .eq("id",1)
-            .single();
-
-
-        if(error){
-          throw error;
-        }
-
-
-        if(!data){
-          return;
-        }
-
-
-        /* NAME */
-
-        if(hasValue(data.full_name)){
-
-          const name =
-            String(data.full_name).trim();
-
-          const parts =
-            name.split(" ");
-
-          if(parts.length > 1){
-
-            const last =
-              parts.pop();
-
-            fullName.innerHTML =
-              `${parts.join(" ")} <span>${last}</span>`;
-
-          }else{
-
-            fullName.textContent =
-              name;
-
-          }
-
-          profileImage.alt =
-            name;
-
-        }
-
-
-        /* JOB */
-
-        setText(
-          jobTitle,
-          data.job_title
-        );
-
-
-        /*
-          PROFILE IMAGE
-
-          IMPORTANT:
-          The default image is profile.png.
-          If Supabase has a profile image URL,
-          Supabase image will be used.
-        */
-
-        if(hasValue(data.profile_image)){
-
-          profileImage.src =
-            data.profile_image;
-
-        }else{
-
-          profileImage.src =
-            "profile.png";
-
-        }
-
-
-        /* ABOUT */
-
-        setText(
-          aboutMe,
-          data.about_me
-        );
-
-
-        /* CAREER */
-
-        setText(
-          careerText,
-          data.career
-        );
-
-
-        /* EDUCATION */
-
-        setText(
-          educationText,
-          data.education
-        );
-
-
-        /* FAMILY */
-
-        setText(
-          familyText,
-          data.family
-        );
-
-
-        /* INTERESTS */
-
-        setText(
-          interestsText,
-          data.interests
-        );
-
-
-        /* EMAIL */
-
-        if(hasValue(data.email)){
-
-          emailLink.textContent =
-            data.email;
-
-          emailLink.href =
-            "mailto:" + data.email;
-
-        }else{
-
-          emailLink.textContent =
-            "Not added yet";
-
-          emailLink.removeAttribute("href");
-
-        }
-
-
-        /* PHONE */
-
-        if(hasValue(data.phone)){
-
-          phoneLink.textContent =
-            data.phone;
-
-          phoneLink.href =
-            "tel:" +
-            String(data.phone)
-              .replace(/\s+/g,"");
-
-        }else{
-
-          phoneLink.textContent =
-            "Not added yet";
-
-          phoneLink.removeAttribute("href");
-
-        }
-
-
-        /* FACEBOOK */
-
-        setSocialLink(
-          facebookLink,
-          data.facebook_url
-        );
-
-
-        /* INSTAGRAM */
-
-        setSocialLink(
-          instagramLink,
-          data.Instagram_url
-        );
-
-
-        /* WHATSAPP */
-
-        setSocialLink(
-          whatsappLink,
-          data.whatsapp_url
-        );
-
-
-      }catch(error){
-
-        console.error(
-          "Profile loading error:",
-          error
-        );
-
-      }finally{
-
-        hideLoading();
-
-      }
-
-    }
-
-
-    function hideLoading(){
-
-      const loading =
-        document.getElementById("loading");
-
-      if(!loading) return;
-
-      loading.style.opacity =
-        "0";
-
-      setTimeout(()=>{
-
-        loading.style.display =
-          "none";
-
-      },400);
-
-    }
-
-
-    setTimeout(
-      hideLoading,
-      5000
-    );
-
-
-    /* MOBILE MENU */
-
-    const menuBtn =
-      document.getElementById("menuBtn");
-
-    const navLinks =
-      document.getElementById("navLinks");
-
-
-    menuBtn.addEventListener(
-      "click",
-      ()=>{
-
-        navLinks.classList.toggle(
-          "active"
-        );
-
-        const icon =
-          menuBtn.querySelector("i");
-
-        if(
-          navLinks.classList.contains(
-            "active"
-          )
-        ){
-
-          icon.className =
-            "fa-solid fa-xmark";
-
-        }else{
-
-          icon.className =
-            "fa-solid fa-bars";
-
-        }
-
-      }
-    );
-
-
-    document
-      .querySelectorAll(
-        ".nav-links a"
-      )
-      .forEach(link=>{
-
-        link.addEventListener(
-          "click",
-          ()=>{
-
-            navLinks.classList.remove(
-              "active"
-            );
-
-            const icon =
-              menuBtn.querySelector("i");
-
-            icon.className =
-              "fa-solid fa-bars";
-
-          }
-        );
-
-      });
-
-
-    /* SCROLL REVEAL */
-
-    const observer =
-      new IntersectionObserver(
-
-        entries=>{
-
-          entries.forEach(
-            entry=>{
-
-              if(entry.isIntersecting){
-
-                entry.target
-                  .classList
-                  .add("active");
-
-              }
-
-            }
-          );
-
-        },
-
-        {
-          threshold:.12
-        }
-
-      );
-
-
-    document
-      .querySelectorAll(".reveal")
-      .forEach(element=>{
-
-        observer.observe(element);
-
-      });
-
-
-    /* YEAR */
-
-    document.getElementById(
-      "year"
-    ).textContent =
-      new Date().getFullYear();
-
-
-    /* START */
-
-    loadProfile();
-
-  </script>
-
-</body>
-</html>
+        <li><a href="#family">Family</a></
