@@ -5,17 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MD. PRINCE — Personal Profile</title>
-  <meta name="description" content="Personal profile website of MD. PRINCE — Customer Support & Operations Executive.">
+
+  <meta name="description"
+        content="Personal profile website of MD. PRINCE — Customer Support & Operations Executive.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -32,15 +37,16 @@
       color:#f8fafc;
       line-height:1.7;
       overflow-x:hidden;
+      min-height:100vh;
     }
 
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      z-index:-3;
+      z-index:-10;
       background:
-        radial-gradient(circle at 10% 20%,rgba(45,212,191,.10),transparent 28%),
+        radial-gradient(circle at 10% 10%,rgba(45,212,191,.10),transparent 27%),
         radial-gradient(circle at 90% 20%,rgba(59,130,246,.11),transparent 28%),
         radial-gradient(circle at 50% 90%,rgba(139,92,246,.08),transparent 30%),
         linear-gradient(135deg,#050816,#081120,#070b18);
@@ -67,6 +73,7 @@
     }
 
     .container{
+      width:100%;
       max-width:1180px;
       margin:auto;
     }
@@ -89,54 +96,76 @@
       border-radius:20px;
     }
 
-    /* BACKGROUND ORBS */
+    /* =========================
+       PREMIUM MOVING BACKGROUND
+    ========================== */
 
     .orb{
       position:fixed;
       border-radius:50%;
-      filter:blur(90px);
-      opacity:.13;
+      filter:blur(100px);
       pointer-events:none;
-      z-index:-2;
-      animation:orbMove 12s ease-in-out infinite alternate;
+      z-index:-5;
+      opacity:.14;
     }
 
-    .orb-one{
+    .orb-1{
+      width:320px;
+      height:320px;
+      background:#2dd4bf;
+      left:-120px;
+      top:15%;
+      animation:orbOne 12s ease-in-out infinite alternate;
+    }
+
+    .orb-2{
+      width:360px;
+      height:360px;
+      background:#3b82f6;
+      right:-150px;
+      top:35%;
+      animation:orbTwo 14s ease-in-out infinite alternate;
+    }
+
+    .orb-3{
       width:300px;
       height:300px;
-      background:#2dd4bf;
-      top:12%;
-      left:-100px;
-    }
-
-    .orb-two{
-      width:340px;
-      height:340px;
-      background:#3b82f6;
-      right:-130px;
-      top:35%;
-      animation-delay:2s;
-    }
-
-    .orb-three{
-      width:280px;
-      height:280px;
       background:#8b5cf6;
-      bottom:-100px;
       left:40%;
-      animation-delay:4s;
+      bottom:-150px;
+      animation:orbThree 16s ease-in-out infinite alternate;
     }
 
-    @keyframes orbMove{
+    @keyframes orbOne{
       from{
         transform:translate(0,0) scale(1);
       }
       to{
-        transform:translate(35px,45px) scale(1.12);
+        transform:translate(60px,70px) scale(1.18);
       }
     }
 
-    /* LOADING */
+    @keyframes orbTwo{
+      from{
+        transform:translate(0,0) scale(1);
+      }
+      to{
+        transform:translate(-70px,50px) scale(1.15);
+      }
+    }
+
+    @keyframes orbThree{
+      from{
+        transform:translate(0,0) scale(1);
+      }
+      to{
+        transform:translate(40px,-80px) scale(1.15);
+      }
+    }
+
+    /* =========================
+       LOADING
+    ========================== */
 
     #loading{
       position:fixed;
@@ -147,31 +176,45 @@
       align-items:center;
       justify-content:center;
       flex-direction:column;
-      gap:17px;
-      transition:.5s;
+      gap:16px;
+      transition:opacity .45s ease;
+    }
+
+    .loader-logo{
+      font-family:'Poppins',sans-serif;
+      font-size:24px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .loader-logo span{
+      color:#2dd4bf;
     }
 
     .loader{
-      width:48px;
-      height:48px;
+      width:45px;
+      height:45px;
       border-radius:50%;
-      border:3px solid rgba(255,255,255,.1);
+      border:3px solid rgba(255,255,255,.09);
       border-top-color:#2dd4bf;
       border-right-color:#3b82f6;
-      animation:spin .8s linear infinite;
+      animation:spin .75s linear infinite;
     }
 
     #loading p{
       color:#94a3b8;
       font-size:13px;
-      letter-spacing:.5px;
     }
 
     @keyframes spin{
-      to{transform:rotate(360deg);}
+      to{
+        transform:rotate(360deg);
+      }
     }
 
-    /* NAVBAR */
+    /* =========================
+       NAVBAR
+    ========================== */
 
     header{
       position:fixed;
@@ -179,7 +222,7 @@
       left:0;
       width:100%;
       z-index:9999;
-      background:rgba(5,8,22,.70);
+      background:rgba(5,8,22,.72);
       backdrop-filter:blur(20px);
       -webkit-backdrop-filter:blur(20px);
       border-bottom:1px solid rgba(255,255,255,.07);
@@ -207,13 +250,14 @@
       background:linear-gradient(90deg,#2dd4bf,#60a5fa);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
+      background-clip:text;
     }
 
     .nav-links{
       display:flex;
       list-style:none;
       align-items:center;
-      gap:22px;
+      gap:20px;
     }
 
     .nav-links a{
@@ -247,7 +291,7 @@
     }
 
     .admin-link{
-      border:1px solid rgba(45,212,191,.4);
+      border:1px solid rgba(45,212,191,.42);
       padding:8px 13px;
       border-radius:10px;
       color:#2dd4bf !important;
@@ -267,9 +311,12 @@
       display:none;
       cursor:pointer;
       font-size:24px;
+      color:#fff;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================== */
 
     .hero{
       min-height:100vh;
@@ -303,6 +350,7 @@
       width:30px;
       height:2px;
       background:#2dd4bf;
+      border-radius:20px;
     }
 
     .hero h1{
@@ -314,41 +362,55 @@
     }
 
     .hero h1 span{
-      background:linear-gradient(90deg,#2dd4bf,#60a5fa,#a78bfa);
-      background-size:200%;
+      background:linear-gradient(
+        90deg,
+        #2dd4bf,
+        #60a5fa,
+        #a78bfa,
+        #2dd4bf
+      );
+      background-size:250%;
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      animation:gradientText 5s linear infinite;
+      background-clip:text;
+      animation:nameGradient 6s linear infinite;
     }
 
-    @keyframes gradientText{
-      0%{background-position:0%;}
-      100%{background-position:200%;}
+    @keyframes nameGradient{
+      from{
+        background-position:0%;
+      }
+      to{
+        background-position:250%;
+      }
     }
 
     .job-title{
       font-size:20px;
       font-weight:600;
       color:#cbd5e1;
-      margin-bottom:8px;
+      margin-bottom:7px;
     }
 
-    .typing-wrapper{
+    .typing-box{
       height:31px;
       margin-bottom:18px;
+      font-size:15px;
       color:#2dd4bf;
       font-weight:700;
-      font-size:15px;
     }
 
     #typingText::after{
       content:"|";
       margin-left:3px;
+      color:#60a5fa;
       animation:blink .7s infinite;
     }
 
     @keyframes blink{
-      50%{opacity:0;}
+      50%{
+        opacity:0;
+      }
     }
 
     .hero-description{
@@ -384,7 +446,7 @@
 
     .btn-primary:hover{
       transform:translateY(-4px);
-      box-shadow:0 16px 40px rgba(45,212,191,.24);
+      box-shadow:0 16px 45px rgba(45,212,191,.24);
     }
 
     .btn-outline{
@@ -399,7 +461,9 @@
       transform:translateY(-4px);
     }
 
-    /* PROFILE */
+    /* =========================
+       PROFILE PNG
+    ========================== */
 
     .hero-image-wrap{
       display:flex;
@@ -413,54 +477,74 @@
       padding:8px;
       border-radius:50%;
       position:relative;
-      background:linear-gradient(135deg,#2dd4bf,#3b82f6,#8b5cf6,#2dd4bf);
+      background:linear-gradient(
+        135deg,
+        #2dd4bf,
+        #3b82f6,
+        #8b5cf6,
+        #2dd4bf
+      );
       background-size:300% 300%;
-      animation:ringGradient 7s ease infinite, floatPhoto 5s ease-in-out infinite;
+      animation:
+        ringGradient 7s ease infinite,
+        photoFloat 5s ease-in-out infinite;
       box-shadow:
-        0 0 75px rgba(45,212,191,.14),
-        0 25px 70px rgba(0,0,0,.4);
-    }
-
-    @keyframes ringGradient{
-      0%{background-position:0 50%;}
-      50%{background-position:100% 50%;}
-      100%{background-position:0 50%;}
-    }
-
-    @keyframes floatPhoto{
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-10px);}
-    }
-
-    .profile-ring::before,
-    .profile-ring::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      pointer-events:none;
+        0 0 75px rgba(45,212,191,.15),
+        0 25px 70px rgba(0,0,0,.42);
     }
 
     .profile-ring::before{
+      content:"";
+      position:absolute;
       inset:-18px;
-      border:1px solid rgba(45,212,191,.2);
+      border:1px solid rgba(45,212,191,.20);
+      border-radius:50%;
       animation:pulseRing 2.8s ease-in-out infinite;
+      pointer-events:none;
     }
 
     .profile-ring::after{
-      inset:-35px;
-      border:1px dashed rgba(96,165,250,.12);
+      content:"";
+      position:absolute;
+      inset:-34px;
+      border:1px dashed rgba(96,165,250,.15);
+      border-radius:50%;
       animation:rotateRing 20s linear infinite;
+      pointer-events:none;
+    }
+
+    @keyframes ringGradient{
+      0%{
+        background-position:0 50%;
+      }
+      50%{
+        background-position:100% 50%;
+      }
+      100%{
+        background-position:0 50%;
+      }
+    }
+
+    @keyframes photoFloat{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
     }
 
     @keyframes pulseRing{
       50%{
-        transform:scale(1.03);
+        transform:scale(1.035);
         opacity:.45;
       }
     }
 
     @keyframes rotateRing{
-      to{transform:rotate(360deg);}
+      to{
+        transform:rotate(360deg);
+      }
     }
 
     .profile-image{
@@ -469,11 +553,13 @@
       border-radius:50%;
       object-fit:cover;
       object-position:center;
-      background:#111827;
+      background:transparent;
       border:7px solid #081120;
     }
 
-    /* SECTIONS */
+    /* =========================
+       SECTION HEAD
+    ========================== */
 
     .section-head{
       margin-bottom:42px;
@@ -511,24 +597,33 @@
       max-width:680px;
     }
 
-    /* GLASS CARD */
+    /* =========================
+       PREMIUM CARDS
+    ========================== */
 
     .glass-card{
       background:
-        linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.065),
+          rgba(255,255,255,.025)
+        );
       border:1px solid rgba(255,255,255,.085);
       border-radius:22px;
       padding:30px;
       box-shadow:0 18px 60px rgba(0,0,0,.19);
       backdrop-filter:blur(14px);
       -webkit-backdrop-filter:blur(14px);
-      transition:transform .35s,border-color .35s,box-shadow .35s;
+      transition:
+        transform .35s,
+        border-color .35s,
+        box-shadow .35s;
     }
 
     .glass-card:hover{
       transform:translateY(-6px);
       border-color:rgba(45,212,191,.28);
-      box-shadow:0 22px 70px rgba(0,0,0,.27);
+      box-shadow:0 24px 70px rgba(0,0,0,.28);
     }
 
     /* ABOUT */
@@ -561,7 +656,7 @@
       background:rgba(45,212,191,.09);
       border:1px solid rgba(45,212,191,.2);
       margin-bottom:20px;
-      box-shadow:0 0 30px rgba(45,212,191,.08);
+      box-shadow:0 0 35px rgba(45,212,191,.08);
     }
 
     .about-icon-box h3{
@@ -579,7 +674,7 @@
       white-space:pre-line;
     }
 
-    /* INFO */
+    /* INFO CARDS */
 
     .info-card{
       position:relative;
@@ -625,7 +720,9 @@
       white-space:pre-line;
     }
 
-    /* VIDEO / STORY */
+    /* =========================
+       MY STORY / VIDEO
+    ========================== */
 
     .story-grid{
       display:grid;
@@ -636,55 +733,84 @@
 
     .video-card{
       padding:12px;
-      overflow:hidden;
     }
 
     .video-container{
       position:relative;
       width:100%;
       aspect-ratio:16/9;
-      border-radius:15px;
+      border-radius:16px;
       overflow:hidden;
       background:
-        radial-gradient(circle at center,rgba(45,212,191,.12),transparent 45%),
+        radial-gradient(
+          circle at center,
+          rgba(45,212,191,.13),
+          transparent 45%
+        ),
         #030712;
-      display:flex;
-      align-items:center;
-      justify-content:center;
     }
 
-    .video-container video,
-    .video-container iframe{
+    .video-container video{
       width:100%;
       height:100%;
-      border:0;
+      display:block;
       object-fit:cover;
+      background:#030712;
     }
 
     .video-placeholder{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
       text-align:center;
+      padding:25px;
       color:#94a3b8;
-      padding:30px;
+      pointer-events:none;
     }
 
-    .video-placeholder i{
+    .play-circle{
+      width:72px;
+      height:72px;
+      border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      width:70px;
-      height:70px;
-      margin:0 auto 15px;
-      border-radius:50%;
+      margin-bottom:15px;
       background:linear-gradient(135deg,#2dd4bf,#3b82f6);
       color:#04111b;
       font-size:25px;
-      box-shadow:0 0 35px rgba(45,212,191,.2);
+      box-shadow:0 0 40px rgba(45,212,191,.22);
+      animation:playPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes playPulse{
+      50%{
+        transform:scale(1.08);
+        box-shadow:0 0 55px rgba(45,212,191,.32);
+      }
+    }
+
+    .video-placeholder h3{
+      color:#f8fafc;
+      font-size:19px;
+      margin-bottom:5px;
+    }
+
+    .video-placeholder p{
+      font-size:13px;
     }
 
     .story-content{
       display:flex;
       flex-direction:column;
       justify-content:center;
+    }
+
+    .story-content .card-icon{
+      margin-bottom:20px;
     }
 
     .story-content h3{
@@ -695,6 +821,7 @@
 
     .story-content p{
       color:#aebdce;
+      white-space:pre-line;
     }
 
     /* CONTACT */
@@ -784,11 +911,11 @@
       font-weight:700;
     }
 
-    /* REVEAL */
+    /* SCROLL REVEAL */
 
     .reveal{
       opacity:0;
-      transform:translateY(35px);
+      transform:translateY(34px);
       transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.2,.7,.2,1);
@@ -799,7 +926,9 @@
       transform:translateY(0);
     }
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================== */
 
     @media(max-width:900px){
 
@@ -899,8 +1028,9 @@
         font-size:17px;
       }
 
-      .typing-wrapper{
+      .typing-box{
         font-size:13px;
+        min-height:40px;
       }
 
       .profile-ring{
@@ -930,6 +1060,7 @@
     }
 
     @media(prefers-reduced-motion:reduce){
+
       *,
       *::before,
       *::after{
@@ -937,24 +1068,40 @@
         animation-iteration-count:1 !important;
         scroll-behavior:auto !important;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="orb orb-one"></div>
-  <div class="orb orb-two"></div>
-  <div class="orb orb-three"></div>
+  <!-- PREMIUM BACKGROUND -->
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+
+  <!-- LOADING -->
 
   <div id="loading">
+
+    <div class="loader-logo">
+      MD. <span>PRINCE</span>
+    </div>
+
     <div class="loader"></div>
+
     <p>Loading profile...</p>
+
   </div>
+
 
   <!-- NAVBAR -->
 
   <header>
+
     <nav>
 
       <a href="#home" class="logo">
@@ -964,7 +1111,1551 @@
       <ul class="nav-links" id="navLinks">
 
         <li><a href="#home">Home</a></li>
+
         <li><a href="#about">About</a></li>
+
         <li><a href="#career">Career</a></li>
+
         <li><a href="#education">Education</a></li>
-        <li><a href="#family">Family</a></
+
+        <li><a href="#family">Family</a></li>
+
+        <li><a href="#interests">Interests</a></li>
+
+        <li><a href="#story">My Story</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+        <li>
+
+          <a href="admin.html" class="admin-link">
+
+            <i class="fa-solid fa-lock"></i>
+
+            Admin
+
+          </a>
+
+        </li>
+
+      </ul>
+
+      <div class="menu-btn" id="menuBtn">
+
+        <i class="fa-solid fa-bars"></i>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+      <div class="hero-content reveal">
+
+        <div class="hello">
+          Hello, I'm
+        </div>
+
+        <h1 id="fullName">
+          MD. <span>PRINCE</span>
+        </h1>
+
+        <div class="job-title" id="jobTitle">
+          Customer Support & Operations Executive
+        </div>
+
+        <div class="typing-box">
+
+          <span id="typingText"></span>
+
+        </div>
+
+        <p class="hero-description">
+
+          Welcome to my personal profile. Here you can learn more
+          about me, my career, education, interests and contact information.
+
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#about" class="btn btn-primary">
+
+            <i class="fa-solid fa-user"></i>
+
+            About Me
+
+          </a>
+
+          <a href="#story" class="btn btn-outline">
+
+            <i class="fa-solid fa-circle-play"></i>
+
+            My Story
+
+          </a>
+
+          <a href="#contact" class="btn btn-outline">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            Contact Me
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROFILE IMAGE: PNG -->
+
+      <div class="hero-image-wrap reveal">
+
+        <div class="profile-ring">
+
+          <img
+            id="profileImage"
+            class="profile-image"
+            src="profile.png"
+            alt="MD. PRINCE"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Introduction
+        </div>
+
+        <h2 class="section-title">
+          About Me
+        </h2>
+
+        <p class="section-subtitle">
+          A little information about who I am and what I do.
+        </p>
+
+      </div>
+
+
+      <div class="about-grid">
+
+        <div class="glass-card about-icon-box reveal">
+
+          <div class="big-icon">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+          </div>
+
+          <h3>
+            Personal Profile
+          </h3>
+
+          <p>
+            Customer Support<br>
+            Operations<br>
+            International Courier
+          </p>
+
+        </div>
+
+
+        <div class="glass-card reveal">
+
+          <p class="about-text" id="aboutMe">
+            I currently work at Box2Go International Courier as a Customer Support & Operations Executive. My responsibilities include assisting customers, providing international shipping information, handling parcel booking and shipment-related queries, and supporting day-to-day courier operations.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CAREER -->
+
+  <section id="career">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Professional Journey
+        </div>
+
+        <h2 class="section-title">
+          Career & Experience
+        </h2>
+
+      </div>
+
+
+      <div class="glass-card info-card reveal">
+
+        <div class="card-icon">
+
+          <i class="fa-solid fa-briefcase"></i>
+
+        </div>
+
+        <h3>
+          My Career
+        </h3>
+
+        <p id="careerText">
+          I am currently working in the international courier industry, gaining practical experience in customer support, parcel booking, international shipping information and day-to-day courier operations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Academic Background
+        </div>
+
+        <h2 class="section-title">
+          Education
+        </h2>
+
+      </div>
+
+
+      <div class="glass-card info-card reveal">
+
+        <div class="card-icon">
+
+          <i class="fa-solid fa-graduation-cap"></i>
+
+        </div>
+
+        <h3>
+          Education Information
+        </h3>
+
+        <p id="educationText">School: Ilshabari High School, Naogaon
+Board: Rajshahi Education Board
+SSC: Registered Candidate — 2026</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAMILY -->
+
+  <section id="family">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Personal Life
+        </div>
+
+        <h2 class="section-title">
+          Family
+        </h2>
+
+      </div>
+
+
+      <div class="glass-card info-card reveal">
+
+        <div class="card-icon">
+
+          <i class="fa-solid fa-people-roof"></i>
+
+        </div>
+
+        <h3>
+          My Family
+        </h3>
+
+        <p id="familyText">
+          Family information will be available here.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTERESTS -->
+
+  <section id="interests">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Things I Like
+        </div>
+
+        <h2 class="section-title">
+          Interests
+        </h2>
+
+      </div>
+
+
+      <div class="glass-card info-card reveal">
+
+        <div class="card-icon">
+
+          <i class="fa-solid fa-star"></i>
+
+        </div>
+
+        <h3>
+          My Interests
+        </h3>
+
+        <p id="interestsText">
+          My interests and future goals will be available here.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MY STORY / VIDEO -->
+
+  <section id="story">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Video Introduction
+        </div>
+
+        <h2 class="section-title">
+          My Story
+        </h2>
+
+        <p class="section-subtitle">
+          A visual introduction to my journey, experience and future goals.
+        </p>
+
+      </div>
+
+
+      <div class="story-grid">
+
+        <div class="glass-card video-card reveal">
+
+          <div class="video-container">
+
+            <!--
+              OPTIONAL VIDEO:
+
+              Upload a video named "intro.mp4"
+              to the same GitHub repository.
+
+              Then remove the word "hidden"
+              from the video tag below.
+            -->
+
+            <video
+              id="introVideo"
+              controls
+              playsinline
+              preload="metadata"
+              hidden
+            >
+              <source src="intro.mp4" type="video/mp4">
+
+              Your browser does not support video playback.
+
+            </video>
+
+
+            <div class="video-placeholder" id="videoPlaceholder">
+
+              <div class="play-circle">
+
+                <i class="fa-solid fa-play"></i>
+
+              </div>
+
+              <h3>
+                My Introduction Video
+              </h3>
+
+              <p>
+                Video will be available here.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="glass-card story-content reveal">
+
+          <div class="card-icon">
+
+            <i class="fa-solid fa-route"></i>
+
+          </div>
+
+          <h3>
+            Building My Journey
+          </h3>
+
+          <p>
+            I am building my professional experience in customer support, operations and the international courier industry.
+
+My goal is to continue learning, develop my professional skills and build a successful future through experience, dedication and continuous improvement.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div class="section-label">
+          Get In Touch
+        </div>
+
+        <h2 class="section-title">
+          Contact
+        </h2>
+
+        <p class="section-subtitle">
+          You can contact or connect with me through the information below.
+        </p>
+
+      </div>
+
+
+      <div class="contact-grid">
+
+        <div class="glass-card contact-item reveal">
+
+          <div class="contact-icon">
+
+            <i class="fa-solid fa-envelope"></i>
+
+          </div>
+
+          <div>
+
+            <small>
+              Email
+            </small>
+
+            <a
+              id="emailLink"
+              class="contact-value"
+            >
+              Not added yet
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="glass-card contact-item reveal">
+
+          <div class="contact-icon">
+
+            <i class="fa-solid fa-phone"></i>
+
+          </div>
+
+          <div>
+
+            <small>
+              Phone
+            </small>
+
+            <a
+              id="phoneLink"
+              class="contact-value"
+            >
+              Not added yet
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="social-wrap reveal">
+
+        <a
+          id="facebookLink"
+          class="social-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Facebook"
+        >
+
+          <i class="fa-brands fa-facebook-f"></i>
+
+        </a>
+
+
+        <a
+          id="instagramLink"
+          class="social-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Instagram"
+        >
+
+          <i class="fa-brands fa-instagram"></i>
+
+        </a>
+
+
+        <a
+          id="whatsappLink"
+          class="social-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="WhatsApp"
+        >
+
+          <i class="fa-brands fa-whatsapp"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+
+      © <span id="year"></span>
+
+      <span>MD. PRINCE</span>.
+
+      All Rights Reserved.
+
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* =========================
+       SUPABASE
+    ========================== */
+
+    const SUPABASE_URL =
+      "https://mwmgwkufuukvuqpadkck.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+      "sb_publishable_dfYTZhLE8QzXuGN9X4MSVg_uaj4agD0";
+
+
+    let supabaseClient = null;
+
+
+    try{
+
+      if(
+        window.supabase &&
+        typeof window.supabase.createClient === "function"
+      ){
+
+        supabaseClient =
+          window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+          );
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Supabase initialization error:",
+        error
+      );
+
+    }
+
+
+    /* =========================
+       ELEMENTS
+    ========================== */
+
+    const fullName =
+      document.getElementById("fullName");
+
+    const jobTitle =
+      document.getElementById("jobTitle");
+
+    const profileImage =
+      document.getElementById("profileImage");
+
+    const aboutMe =
+      document.getElementById("aboutMe");
+
+    const careerText =
+      document.getElementById("careerText");
+
+    const educationText =
+      document.getElementById("educationText");
+
+    const familyText =
+      document.getElementById("familyText");
+
+    const interestsText =
+      document.getElementById("interestsText");
+
+    const facebookLink =
+      document.getElementById("facebookLink");
+
+    const instagramLink =
+      document.getElementById("instagramLink");
+
+    const whatsappLink =
+      document.getElementById("whatsappLink");
+
+    const emailLink =
+      document.getElementById("emailLink");
+
+    const phoneLink =
+      document.getElementById("phoneLink");
+
+
+    /* =========================
+       HELPERS
+    ========================== */
+
+    function hasValue(value){
+
+      return (
+        value !== null &&
+        value !== undefined &&
+        String(value).trim() !== ""
+      );
+
+    }
+
+
+    function setText(element,value){
+
+      if(
+        element &&
+        hasValue(value)
+      ){
+
+        element.textContent =
+          value;
+
+      }
+
+    }
+
+
+    function setSocialLink(element,url){
+
+      if(!element){
+        return;
+      }
+
+
+      if(hasValue(url)){
+
+        let finalURL =
+          String(url).trim();
+
+
+        if(
+          !finalURL.startsWith("http://") &&
+          !finalURL.startsWith("https://")
+        ){
+
+          finalURL =
+            "https://" + finalURL;
+
+        }
+
+
+        element.href =
+          finalURL;
+
+        element.style.display =
+          "flex";
+
+      }else{
+
+        element.style.display =
+          "none";
+
+      }
+
+    }
+
+
+    /* =========================
+       LOADING
+    ========================== */
+
+    let loadingHidden = false;
+
+
+    function hideLoading(){
+
+      if(loadingHidden){
+        return;
+      }
+
+      loadingHidden = true;
+
+
+      const loading =
+        document.getElementById("loading");
+
+
+      if(!loading){
+        return;
+      }
+
+
+      loading.style.opacity =
+        "0";
+
+
+      setTimeout(()=>{
+
+        loading.style.display =
+          "none";
+
+      },450);
+
+    }
+
+
+    /*
+      IMPORTANT:
+      Even if Supabase has a problem,
+      the website will NOT stay stuck
+      on the loading screen.
+    */
+
+    setTimeout(
+      hideLoading,
+      3500
+    );
+
+
+    /* =========================
+       LOAD PROFILE
+    ========================== */
+
+    async function loadProfile(){
+
+      try{
+
+        /*
+          If Supabase library does not load,
+          use the default website content.
+        */
+
+        if(!supabaseClient){
+
+          console.warn(
+            "Supabase unavailable. Default profile content is being used."
+          );
+
+          return;
+
+        }
+
+
+        const { data, error } =
+          await supabaseClient
+            .from("profile")
+            .select("*")
+            .eq("id",1)
+            .single();
+
+
+        if(error){
+
+          throw error;
+
+        }
+
+
+        if(!data){
+
+          return;
+
+        }
+
+
+        /* NAME */
+
+        if(hasValue(data.full_name)){
+
+          const name =
+            String(data.full_name).trim();
+
+          const parts =
+            name.split(/\s+/);
+
+
+          if(parts.length > 1){
+
+            const last =
+              parts.pop();
+
+
+            fullName.innerHTML =
+              `${parts.join(" ")} <span>${last}</span>`;
+
+          }else{
+
+            fullName.textContent =
+              name;
+
+          }
+
+
+          profileImage.alt =
+            name;
+
+        }
+
+
+        /* JOB */
+
+        setText(
+          jobTitle,
+          data.job_title
+        );
+
+
+        /*
+          PROFILE IMAGE
+
+          Supabase profile image has priority.
+
+          If there is no Supabase image,
+          profile.png will always be used.
+        */
+
+        if(hasValue(data.profile_image)){
+
+          profileImage.src =
+            String(data.profile_image).trim();
+
+        }else{
+
+          profileImage.src =
+            "profile.png";
+
+        }
+
+
+        /* ABOUT */
+
+        setText(
+          aboutMe,
+          data.about_me
+        );
+
+
+        /* CAREER */
+
+        setText(
+          careerText,
+          data.career
+        );
+
+
+        /* EDUCATION */
+
+        setText(
+          educationText,
+          data.education
+        );
+
+
+        /* FAMILY */
+
+        setText(
+          familyText,
+          data.family
+        );
+
+
+        /* INTERESTS */
+
+        setText(
+          interestsText,
+          data.interests
+        );
+
+
+        /* EMAIL */
+
+        if(hasValue(data.email)){
+
+          const email =
+            String(data.email).trim();
+
+
+          emailLink.textContent =
+            email;
+
+          emailLink.href =
+            "mailto:" + email;
+
+        }else{
+
+          emailLink.textContent =
+            "Not added yet";
+
+          emailLink.removeAttribute(
+            "href"
+          );
+
+        }
+
+
+        /* PHONE */
+
+        if(hasValue(data.phone)){
+
+          const phone =
+            String(data.phone).trim();
+
+
+          phoneLink.textContent =
+            phone;
+
+          phoneLink.href =
+            "tel:" +
+            phone.replace(/\s+/g,"");
+
+        }else{
+
+          phoneLink.textContent =
+            "Not added yet";
+
+          phoneLink.removeAttribute(
+            "href"
+          );
+
+        }
+
+
+        /* FACEBOOK */
+
+        setSocialLink(
+          facebookLink,
+          data.facebook_url
+        );
+
+
+        /* INSTAGRAM */
+
+        /*
+          Your existing database used
+          Instagram_url with capital I.
+
+          This supports both versions.
+        */
+
+        setSocialLink(
+          instagramLink,
+          data.Instagram_url ||
+          data.instagram_url
+        );
+
+
+        /* WHATSAPP */
+
+        setSocialLink(
+          whatsappLink,
+          data.whatsapp_url
+        );
+
+
+      }catch(error){
+
+        console.error(
+          "Profile loading error:",
+          error
+        );
+
+        /*
+          The website still works with
+          default HTML information.
+        */
+
+      }finally{
+
+        hideLoading();
+
+      }
+
+    }
+
+
+    /* =========================
+       PROFILE IMAGE FALLBACK
+    ========================== */
+
+    profileImage.addEventListener(
+      "error",
+      function(){
+
+        /*
+          Prevent endless fallback loop.
+        */
+
+        if(
+          !this.src.endsWith(
+            "/profile.png"
+          )
+        ){
+
+          this.src =
+            "profile.png";
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       TYPING ANIMATION
+    ========================== */
+
+    const typingText =
+      document.getElementById(
+        "typingText"
+      );
+
+
+    const typingWords = [
+
+      "International Courier Professional",
+
+      "Customer Service Specialist",
+
+      "Operations & Customer Support",
+
+      "Building My Future 🚀"
+
+    ];
+
+
+    let typingWordIndex = 0;
+
+    let typingCharIndex = 0;
+
+    let deleting = false;
+
+
+    function runTyping(){
+
+      if(!typingText){
+        return;
+      }
+
+
+      const currentWord =
+        typingWords[typingWordIndex];
+
+
+      if(!deleting){
+
+        typingCharIndex++;
+
+
+        typingText.textContent =
+          currentWord.substring(
+            0,
+            typingCharIndex
+          );
+
+
+        if(
+          typingCharIndex ===
+          currentWord.length
+        ){
+
+          deleting = true;
+
+
+          setTimeout(
+            runTyping,
+            1600
+          );
+
+
+          return;
+
+        }
+
+
+        setTimeout(
+          runTyping,
+          65
+        );
+
+      }else{
+
+        typingCharIndex--;
+
+
+        typingText.textContent =
+          currentWord.substring(
+            0,
+            typingCharIndex
+          );
+
+
+        if(typingCharIndex === 0){
+
+          deleting = false;
+
+          typingWordIndex =
+            (
+              typingWordIndex + 1
+            ) %
+            typingWords.length;
+
+
+          setTimeout(
+            runTyping,
+            350
+          );
+
+
+          return;
+
+        }
+
+
+        setTimeout(
+          runTyping,
+          32
+        );
+
+      }
+
+    }
+
+
+    runTyping();
+
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuBtn =
+      document.getElementById(
+        "menuBtn"
+      );
+
+    const navLinks =
+      document.getElementById(
+        "navLinks"
+      );
+
+
+    if(
+      menuBtn &&
+      navLinks
+    ){
+
+      menuBtn.addEventListener(
+        "click",
+        ()=>{
+
+          navLinks.classList.toggle(
+            "active"
+          );
+
+
+          const icon =
+            menuBtn.querySelector("i");
+
+
+          if(!icon){
+            return;
+          }
+
+
+          if(
+            navLinks.classList.contains(
+              "active"
+            )
+          ){
+
+            icon.className =
+              "fa-solid fa-xmark";
+
+          }else{
+
+            icon.className =
+              "fa-solid fa-bars";
+
+          }
+
+        }
+      );
+
+
+      document
+        .querySelectorAll(
+          ".nav-links a"
+        )
+        .forEach(link=>{
+
+          link.addEventListener(
+            "click",
+            ()=>{
+
+              navLinks.classList.remove(
+                "active"
+              );
+
+
+              const icon =
+                menuBtn.querySelector("i");
+
+
+              if(icon){
+
+                icon.className =
+                  "fa-solid fa-bars";
+
+              }
+
+            }
+          );
+
+        });
+
+    }
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================== */
+
+    if(
+      "IntersectionObserver" in window
+    ){
+
+      const revealObserver =
+        new IntersectionObserver(
+
+          entries=>{
+
+            entries.forEach(
+              entry=>{
+
+                if(
+                  entry.isIntersecting
+                ){
+
+                  entry.target
+                    .classList
+                    .add("active");
+
+
+                  revealObserver
+                    .unobserve(
+                      entry.target
+                    );
+
+                }
+
+              }
+            );
+
+          },
+
+          {
+            threshold:.12
+          }
+
+        );
+
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach(element=>{
+
+          revealObserver.observe(
+            element
+          );
+
+        });
+
+    }else{
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach(element=>{
+
+          element.classList.add(
+            "active"
+          );
+
+        });
+
+    }
+
+
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================== */
+
+    const pageSections =
+      document.querySelectorAll(
+        "section[id]"
+      );
+
+    const navigationLinks =
+      document.querySelectorAll(
+        '.nav-links a[href^="#"]'
+      );
+
+
+    function updateActiveNavigation(){
+
+      let currentSection =
+        "home";
+
+
+      pageSections.forEach(
+        section=>{
+
+          const sectionTop =
+            section.offsetTop - 130;
+
+
+          if(
+            window.scrollY >=
+            sectionTop
+          ){
+
+            currentSection =
+              section.id;
+
+          }
+
+        }
+      );
+
+
+      navigationLinks.forEach(
+        link=>{
+
+          link.classList.remove(
+            "active-link"
+          );
+
+
+          if(
+            link.getAttribute("href") ===
+            "#" + currentSection
+          ){
+
+            link.classList.add(
+              "active-link"
+            );
+
+          }
+
+        }
+      );
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      updateActiveNavigation,
+      {
+        passive:true
+      }
+    );
+
+
+    updateActiveNavigation();
+
+
+    /* =========================
+       OPTIONAL INTRO VIDEO
+    ========================== */
+
+    const introVideo =
+      document.getElementById(
+        "introVideo"
+      );
+
+    const videoPlaceholder =
+      document.getElementById(
+        "videoPlaceholder"
+      );
+
+
+    /*
+      If later you upload intro.mp4,
+      change the video tag from:
+
+      hidden
+
+      to:
+
+      (remove hidden)
+
+      Then the video will display.
+
+      The placeholder can also be
+      hidden automatically once
+      the video loads.
+    */
+
+
+    if(introVideo){
+
+      introVideo.addEventListener(
+        "loadedmetadata",
+        ()=>{
+
+          if(
+            !introVideo.hasAttribute(
+              "hidden"
+            )
+          ){
+
+            if(videoPlaceholder){
+
+              videoPlaceholder.style.display =
+                "none";
+
+            }
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================== */
+
+    const year =
+      document.getElementById(
+        "year"
+      );
+
+
+    if(year){
+
+      year.textContent =
+        new Date().getFullYear();
+
+    }
+
+
+    /* =========================
+       START WEBSITE
+    ========================== */
+
+    loadProfile();
+
+  </script>
+
+</body>
+</html>
